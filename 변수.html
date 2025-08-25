@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>변수</title>
+</head>
+<body>
+  <script>
+    //변수선언과 할당을 동시에 할 경우
+    var num = 10;
+    var str = 'javascript';
+    var temp = true;
+    document.write(num + '<br>' + str + "<br>" + temp);
+
+    //변수 선언만 할경우
+    var num2, str2, temp2;
+    console.log(num2, str2, temp2); //값을 할당하지 않고 선언만 할 경우 undefined라는 값으로 초기화 됩니다  
+
+    //변수값 재할당
+    num2 = 20;
+    str2 = 'jQuery';
+    temp2 = false;
+    console.log(num2, str2, temp2)
+
+    num2 = 30;
+    console.log(num2)
+    
+    //var의 경우
+    //중복 선언 허용
+    var x = 1;
+    var y = 1;
+
+    //var 키워드로 선언된 변수는 같은 스코프 내에서 중복 선언을 허용한다
+    var x = 100;
+    var y; //초기화문이 없는 변수 선언문은 무시된다
+    console.log(x, y)
+
+    //let은 이미 선언한 변수를 중복해서 선언할 수 없습니다
+    let num = 10; //syntaxError
+</script>
+</body>
+</html>

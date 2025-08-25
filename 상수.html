@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상수 선언</title>
+</head>
+<body>
+  <script>
+    const DIVISION_VALUE = 100;
+    // +더하기, -빼기, *곱하기, /나누기, %나머지
+    let cm = prompt("cm를 입력하세요","");
+    let m = cm / DIVISION_VALUE;
+    console.log(m); //2
+    //const(상수)는 이미 선언한 상수에 대해 재할당할 수 없습니다
+    DIVISION_VALUE = 200;
+  </script>
+</body>
+</html>
