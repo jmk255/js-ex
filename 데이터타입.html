@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>데이터타입</title>
+</head>
+<body>
+  <script>
+    //숫자형
+    let num1 = 10;
+    let num2 = 10.5;
+    let num3 = 1e+2;
+    console.log(typeof num1, typeof num2, typeof num3);
+    
+    //string문자열
+    let str1 = '문"자1';
+    let str2 = "문\"자2";
+    //템플릿 리터럴
+    let str3 = `문\n자3`;
+    console.log(str1, str2, str3,)
+    console.log(typeof str1, typeof str2, typeof str3,)
+
+    alert("자바스크립트\n제이쿼리")
+
+    let temp1 = (5 > 4) //true
+    let temp2 = (5 < 4) //false
+    console.log(temp1, temp2)
+    
+    temp1 = 0; //0의 boolean은 false를 의미합니다
+    temp2 = 1; //1의 boolean은 true를 의미합니다
+    console.log(Boolean(temp1), Boolean(temp2))
+    console.log(Boolean(""))
+  </script>
+</body>
+</html>

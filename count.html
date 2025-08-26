@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>count</title>
+</head>
+<body>
+  <!--버튼을 클릭하면 increase함수 호출-->
+  <button type="button" onclick="increase()">증가</button>
+  <button type="button" onclick="decrease()">감소</button>
+  <h1>0</h1>
+  
+  <script>
+    //h1변수에 h1요소를 할당
+    const h1 = document.querySelector("h1");
+    let count = 0; //count변수 생성
+    function increase(){//버튼을 누르면 실행될 함수 생성
+      //h1요소를 선택 후 텍스트콘텐츠로 count값을 1증가시킨 후 할당
+      h1.textContent = ++count
+    }
+    function decrease(){
+      //h1요소를 선택 후 텍스트콘텐츠로 count값을 1감소 시킨 후 할당
+      h1.textContent = --count
+    }
+  </script>
+</body>
+</html>

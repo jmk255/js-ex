@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>if조건문</title>
+</head>
+<body>
+  <input type="text" placeholder="나이를 숫자만 입력하세요">
+  <!--버튼을 클릭하면 ageCheck함수 실행-->
+  <button type="button" onclick="ageCheck()">입력</button>
+  <script>
+    //ageCheck함수 생성
+    function ageCheck(){
+      //입력창에 입력한 값을 age변수에 할당
+      let age = document.querySelector("input").value;
+      // console.log(age)
+
+      let admissionFee = "";//입장료를 담을 변수
+      
+      if(age < 13){//입력한 나이가 13보다 작으면 실행
+        admissionFee = "2,000원"; 
+      }else if(age >= 13 && age < 20){ //age가 13보다 크거나 같고 20보다 작으면 실행
+        admissionFee = "4,000원"; 
+      }else if(age >= 20){ //age가 20보다 크거나 같으면 실행
+        admissionFee = "6,000원"; 
+      }else{//그외 모든 경우
+        alert("숫자만 입력해 주세요!!!")
+      }
+
+      console.log(admissionFee)
+    }
+  </script>
+</body>
+</html>

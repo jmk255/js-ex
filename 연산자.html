@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>연산자</title>
+</head>
+<body>
+  <script>
+    //+연산자의 경우 숫자+숫자는 값을 더해주고 문자+문자 또는 문자+숫자는 연결해 줍니다
+    let subject = 'css';
+    let score = 100;
+    console.log(subject + '과목 성적은 ' + score);
+
+    //템플릿 리터럴
+    console.log(`${subject} 과목 성적은 ${score}`)
+    
+    //% 나머지 연산자
+    let dividend = prompt("숫자를 입력하세요","");
+    let remainder = dividend % 3; //dividend값을 3으로 나누고 남은 값을 remainder변수에 할당
+    console.log(remainder)
+    if(remainder === 0){//()안의 값이 true면 {}안의 코드가 실행되고 false면 실행되지 않는다
+      //remainder가 3의 배수면 실행
+      alert(`${dividend}는 3의 배수 입니다`)
+    }
+
+    score = 10;
+    ++score; //score값을 1증가를 먼저하고 그값을 참조함
+    score++; //score값을 먼저 참조하고 1증가 시킴
+    
+    score--; //score값을 1감소시킴
+    console.log(score); //11
+
+    //score값을 증가시키고 result에 할당
+    let result = ++score;
+    console.log(result, score)//12, 12
+    //score값을 result에 할당하고 증가시킴
+    result = score++;
+    console.log(result, score)//12, 13
+
+    //우선순위
+    let calculation = 3 - 5 * 8 / 2 + 3;
+    console.log(calculation)
+  </script>
+</body>
+</html>
