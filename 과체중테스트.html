@@ -15,13 +15,15 @@
     let normal_w = (height - 100) * 0.9;
 
     //weight가 normal_w + 5 보다 크면 과체중 normal_w - 5보다 작으면 저체중 둘다 아니면 적정체중
-    if(weight > normal_w + 5){
-      alert(name+"님은 과체중입니다!")
-    }else if(weight < normal_w - 5){
-      alert(name+"님은 저체중입니다!")
-    }else{
-      alert(name+"님은 적정체중입니다!")
-    }
+    // if(weight > normal_w + 5){
+    //   alert(name+"님은 과체중입니다!")
+    // }else if(weight < normal_w - 5){
+    //   alert(name+"님은 저체중입니다!")
+    // }else{
+    //   alert(name+"님은 적정체중입니다!")
+    // }
+
+    weight > normal_w - 5 ? (weight < normal_w + 5 ? alert(name + "님은 적정 체중입니다") : alert(name + "님은 과체중입니다")) : alert(name + "님은 저체중입니다")
   </script>
 </body>
 </html>
