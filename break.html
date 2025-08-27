@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>break와 continue</title>
+</head>
+<body>
+  <script>
+    let limitNum = 5;
+    let sum = 0;
+    for(let i = 1; i <= 20; i++){//i가 1부터20까지 반복되는 코드
+      sum += i;
+      //i가 limitNum과 같아지면 반복문을 멈춤
+      if(i === limitNum) break;
+    }
+    console.log(sum)
+
+    //continue문
+    sum = 0;
+    let num = '3의 배수';
+    //i가 1부터 9까지 반복되는 코드
+    for(let i = 1; i < 10; i++){
+      if(i % 3 === 0){//i가 3의 배수일때만 실행
+        num += i + ' ';
+        continue; //3의 배수일때 아래 코드를 실행하지 않는다
+      }
+      sum += i;
+    }
+    console.log(num + "제외 총합 : " + sum);
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>반복문</title>
+</head>
+<body>
+  <script>
+    //while
+    let n = 1;
+    var sum = 0;
+    
+    //n값이 8보다 작으면 코드블록을 반복 호출합니다
+    while(n < 8){
+      sum += n; //sum = sum + n;
+      n++; //n값을 1증가 시킴
+    }
+    console.log(sum)
+
+    //do while
+    n = 8;
+    //최초에 조건식이 거짓이 되더라도 무조건 코드블록을 한번은 실행합니다
+    do {
+      n++;
+    } while (n < 8)
+    console.log(n)
+
+    //1. number변수에 10을 할당하여 생성 
+    //2. number가 10부터 1까지 1씩 감소하며 작아지는 while문을 작성
+    let number = 10;
+    while(number > 0){
+      console.log(number);
+      number--;
+    }
+  </script>
+</body>
+</html>
