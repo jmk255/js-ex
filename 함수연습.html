@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>함수연습</title>
+</head>
+
+<body>
+  <script>
+    function multipleCheck(a, b) {
+      if (a < 1 || b < 1) { //a가 1보다 작거나 b가 1보다 작으면 실행
+        console.log('양수를 입력하세요.');
+        return; //함수는 리턴문을 만나면 바로 종료가 됩니다
+      }
+      if (a % b == 0) console.log('a는 b의 배수입니다.');
+      else console.log('a는 b의 배수가 아닙니다.');
+    }
+    var a = -10, b = 2;
+    multipleCheck(a, b);
+    a = 10, b = 2;
+    multipleCheck(a, b);
+
+    var x = 'global';
+
+    function foo() {
+      console.log(x); // undefined
+      var x = 'local';
+    }
+    
+
+    foo();
+    console.log(x); // global
+
+    //foo함수 내부에서 선언된 변수 x는 ①의 시점에 이미 선언되었고 undefined로 초기화 되어 있다.
+    //따라서 전역 변수 x를 참조하는 것이 아니라 지역변수 x를 참조해 값을 출력한다.
+    //지역변수는 함수 전체에서 유효하다
+
+    //호이스팅 = 변수 선언이 스코프의 선두로 끌어 올려진 것처럼 동작하는 자바스크립트 고유의 특징이다.
+
+    //let과 const는 호이스팅이 발생되지 않는것 처럼 작동한다
+  </script>
+</body>
+
+</html>
