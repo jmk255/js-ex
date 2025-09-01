@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>컬러 피커</title>
+    <style>
+      html,body{
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height:100%;
+        background:black;
+      }
+      div{
+        background-color:#fff;
+        padding:2rem;/*r = root(최상위)를 의미*/
+        border-radius: 1rem;
+        width:14rem;
+        box-shadow: 0 0 1rem rgba(0,0,0,0.5);
+      }
+    </style>
+    <script>
+      //이벤트 메서드 = addEventListener("이벤트", 실행함수)
+      addEventListener("load",() => {//html문서를 모두 읽어온 후에 코드를 실행
+        //콘솔창에 준비 완료 출력
+        console.log("준비 완료")
+
+        //컬러 코드 가져오기
+        console.log(document.querySelector("#colorPicker").value)
+
+        //텍스트 바꿔 보기(textContent는 태그도 문자열로 표시)
+        // document.querySelector("#colorText").textContent = "컬러 코드: "+ document.querySelector("#colorPicker").value
+
+        //상수로 깔끔하게 코드 정리
+        const text = document.querySelector("#colorText")
+        const color = document.querySelector("#colorPicker")
+
+        text.textContent = `컬러 코드 : ${color.value}`;
+
+        //기본적인 이벤트 작성 방법
+        //선택자.addEventListener(이벤트, 실행함수)
+        
+        //컬러피커가 변경되면 colorBg를 실행시킴
+        color.addEventListener("input", colorBg);
+
+        //컬러 피커를 조작할 때 일련의 동작을 작성
+        function colorBg(){
+          //변경된 컬러 코드를 표시
+          text.textContent = `컬러 코드: ${color.value}`
+        }
+      })
+    </script>
+</head>
+<body>
+  <div>
+    <p id="colorText">컬러 코드 검색</p>
+    <input id="colorPicker" type="color">
+  </div>
+</body>
+</html>

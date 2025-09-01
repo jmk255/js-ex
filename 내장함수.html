@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>내장함수</title>
+</head>
+<body>
+  <script>
+    //인코딩, 디코딩함수
+    let encodeStr = "자바스크립트";
+    console.log(encodeURIComponent(encodeStr)) //인코딩
+    decodeStr = encodeURIComponent(encodeStr)
+    console.log(decodeURIComponent(decodeStr)) //디코딩
+
+    //숫자, 유한무한 값 판별 함수
+    let num1 = '숫자';
+    if(!isNaN(num1)){ //inNaN() = 숫자인지 아닌지 판별하는 함수(숫자면 false, 숫자가 아니면 true)
+      console.log("숫자")
+    }else{
+      console.log("숫자아님")
+    }
+
+    let num2 = 1 / 0;
+    console.log(num2)
+    if(isFinite(num2)){
+      console.log("유한값")
+    }else{
+      console.log("무한값")
+    }
+
+    //숫자, 문자 변환 함수
+    let num3 = "10";
+    console.log(Number(num3)); //문자를 숫자로 변환
+
+    let num4 = "100.3333px";
+    console.log(parseInt(num4)); //정수만 숫자로 변환
+    console.log(parseFloat(num4)); //소수점까지 숫자로 변환
+
+    let num5 = 10;
+    console.log(typeof num5)
+    console.log(typeof String(num5)) //숫자를 문자로 변환
+
+    //자바스크립트 코드 변경 함수
+    let str1 = 'var num6 = 10';
+    let str2 = 'var num7 = 20';
+    eval(str1) //문자열을 자바스크립트 코드로 변환
+    eval(str2)
+    console.log(num6 + num7)
+  </script>
+</body>
+</html>

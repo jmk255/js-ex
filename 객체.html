@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>객체</title>
+</head>
+<body>
+  <script>
+    const obj = {
+      name : '홍길동', //프로퍼티
+      age : 20, //프로퍼티
+      printOut: function(){} //메서드
+    }
+    obj.name = "권수지"
+    console.log(obj.name)
+    
+    //객체 리터럴
+    let info = {
+      subject: "css",
+      credit : 1,
+      printOut : function(){
+        return info.subject + ", " + info.credit + "학점";
+      }
+    }
+
+    console.log(info.subject)
+    console.log(info.credit)
+    console.log(info.printOut())
+
+    info.days = 20; //속성 추가
+    console.log(info)
+    
+    delete info.credit;//속성 삭제
+    console.log(info)
+    
+    info.printOut = function(){//속성 변경
+      return this.subject + ', ' + this.days + "일"
+    }
+    console.log(info.printOut())
+  </script>
+</body>
+</html>
