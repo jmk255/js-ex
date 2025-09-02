@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>배열메서드</title>
+</head>
+<body>
+  <script>
+    //toString메서드 = 문자열로 변환하는 메서드
+    let a1 = [1,2,3];
+    let a2 = ["a","b","c"];
+
+    console.log(typeof a1.toString())//문자열로 변환
+    console.log(typeof a2.toString())//문자열로 변환
+
+    //splice메서드
+    //배열.splice(삽입할 위치, 삭제할 항목 수, 삽입할 값 목록)
+    //특정 위치에 배열요소를 추가 삭제할때 사용
+    let a = [0,1,2];
+    a.splice(1, 0, "a")
+    console.log(a)
+
+    //slice메소드
+    //배열.slice(시작 위치, 끝 위치)
+    //원본 배열에서 시작 위치에서 끝 위치사이 항목을 리턴
+    a = [0,1,2,3]
+    console.log(a.slice(0,1))
+    console.log(a.slice(0,2))
+    console.log(a.slice(2)) //끝 위치 파라미터를 생략하면 배열의 끝까지 리턴한다
+    console.log(a)
+
+    //push, pop 메서드
+    a = []
+    for (let i = 0; i < 5; ++i){
+      a.push(i)//a배열에 i값을 추가합니다
+    }
+    console.log(a)
+
+    while (a.length > 0){ //a배열의 갯수만큼 반복
+      let value = a.pop();
+      console.log(value, a)
+    }
+
+    //unshift, shift메서드
+    //unshift메서드는 배열의 선두에 항목을 추가한다
+    a = []
+    for(let i = 0; i < 5; ++i){
+      a.unshift(i)
+    }
+    console.log(a)
+
+    while (a.length > 0){
+      let value = a.shift();
+      console.log(value, a)
+    }
+  </script>
+</body>
+</html>
