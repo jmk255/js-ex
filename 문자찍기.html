@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문자찍기</title>
+</head>
+<body>
+  <h1 id="typing"></h1>
+  <script>
+    //7의 배수인 순번의 글자를 *로 표시
+    // const tempString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    // //tempString변수에 담겨있는 문자의 갯수 만큼 반복하는 for문
+    // for(let i = 0; i < tempString.length; i++){
+    //   if(i % 7 == 0){//글자의 순번이 7의 배수일 경우
+    //     document.write("*") //*를 출력
+    //   } else {
+    //     document.write(tempString[i]);
+    //   }
+    // }
+
+    //문자열찍기 연습
+    
+    //typing요소에 들어갈 문자
+    let x = "Heaven helps those who help themselves"
+    //글자의 순번을 담을 변수
+    let i = 0;
+    //typing요소 선택
+    const typing = document.querySelector("#typing")
+
+    //typeWriter함수 생성
+    function typeWriter(){
+      //i변수가 x변수의 글자수 보다 작은 숫자일때 실행
+      if(i < x.length){
+        //typing요소에 x변수의 글자중 순번이 i번째인 글자를 더해서 출력합니다
+        typing.textContent += x[i];
+        i++ //i변수값을 1증가 시켜줍니다
+
+        //setTimeout(콜백함수, 지연시간) = 해당 지연시간 경과후 콜백함수를 호출
+        setTimeout(typeWriter, 200);//0.2초 후에 typeWriter함수 호출
+      } else {//i값이 x의 글자수 보다 커지면 실행
+        i = 0;//i를 0으로 초기화
+        //1초 뒤에 recall함수를 호출
+        setTimeout(recall, 1000)
+      }
+    }
+
+    //recall함수 생성
+    function recall(){
+      //typing요소의 글자요소를 비워줍니다.
+      typing.textContent = "";
+      //typeWriter함수를 호출하여 처음부터 다시실행
+      typeWriter()
+    }
+
+    typeWriter();//typeWriter함수 호출
+  </script>
+</body>
+</html>
