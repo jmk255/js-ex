@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date생성자</title>
+</head>
+<body>
+  <script>
+    //날짜와 시간을 표현하는 객체를 생성합니다
+    let now = new Date();
+    console.log(now)
+
+    //Date생성자의 인수로 날짜와 시간을 전달하면 그 날짜와 시간을 가리키는 Date객체가 생성됩니다
+    let then = new Date(2010,5,10)
+    console.log(then)
+
+    //Date객체는 계산식 안에서 밀리초 단위 정수로 값의 타입이 바뀝니다, 이성질을 활용하면 프로그램 실행에 걸리는 시간을 밀리초 단위로 구할 수 있습니다.
+    let elapsed = now - then
+    console.log(elapsed)
+    
+    //실행 시간을 측정할 코드를 작성
+    let end = new Date();
+    elapsed = end - now //프로그램 실행에 걸리는 시간(밀리초 단위)
+    console.log(elapsed)
+    
+  // Date 객체가 제공하는 주요 메서드
+  // now.getFullyear( )   // 연도를 뜻하는 숫자
+  // now.getMonth()    //4(월을 뜻하는 숫자  값, 0부터 시작하므로 이경우에는 5월을 뜻함.)
+  // now.getDate()    //날짜를 뜻하는 숫자 값
+  // now.getDay()   //요일을 뜻하는 숫자 값, 일요일이 0입니다.
+  // now.getHours()  //시간
+  // now.getMinutes()  //분
+  // now.getSeconds()  //초
+  // now.getMilliseconds()  //밀리초
+  // now.toString()   //문자열로 반환
+  // now.toLocaleString()  //지역화된 시간과 날짜 정보
+  // now.toLocaleDateString()  //지역화된 날짜 정보
+  // now.toLocaleTimeString()  //지역화된 시간 정보
+  // now.getUTCHours()  //UTC협정 세계 시
+  // now.toUTCString()  //UTC 시간과 날짜 정보
+  </script>
+</body>
+</html>
