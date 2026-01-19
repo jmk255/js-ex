@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 출력 연습</title>
+</head>
+<body>
+  <button onclick="confirmDialogBox()">confirm 대화 상자</button>
+  <p id="text"></p>
+  
+  <script>
+    //1번
+    alert("장민규");
+
+    //2번
+    function confirmDialogBox(){
+      var str;
+      if(confirm("확인이나 취소를 눌러주세요!") == true){
+        str = "당신은 확인을 눌렀습니다!";
+      } else {
+        str = "당신은 취소를 눌렀습니다!";
+      }
+      document.getElementById("text").innerHTML = str;
+    }
+
+    //3번
+    var inputStr = prompt("입력","자바스크립트를 공부 중입니다");
+    console.log(inputStr)
+  </script>
+</body>
+</html>

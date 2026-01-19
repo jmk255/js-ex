@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 출력문</title>
+</head>
+<body>
+  <p id="text">innerHTML프로퍼티</p>
+  <!--button을 클릭하면 confirmDialogBox함수를 호출-->
+  <button onclick="confirmDialogBox()">confirm 대화 상자</button>
+  <p id="txt"></p>
+  
+  <!--button을 클릭하면 promptDialogBox함수를 호출-->
+  <button onclick="promptDialogBox()">prompt 대화 상자</button>
+  <p id="txt2"></p>
+  
+  <script>
+    //window.alert() 메서드 = 브라우저와는 별도의 대화상자를 띄워 사용자에게 데이터를 전달
+    alert("확인을 누를 때까지 다른 작업을 할 수 없어요!")
+    //window객체의 모든 메소드나 프로퍼티를 사용할때는 window라는 접두사를 생략할 수 있습니다
+
+    //innerHTML 프로퍼티 = HTML요소의 내용(content)이나 속성(attibute)값 등을 손쉽게 변경할 수 있다.
+
+    //id가 text인 요소를 선택.요소안의 문자열을 변경
+    document.getElementById("text").innerHTML = "이 문장으로 바뀌었습니다"
+
+    //document.write()메서드 = 웹 페이지 내에 먼저 로딩된 모든 데이터를 지우고 자신의 데이터를 출력(테스트나 디버깅에 사용)
+    document.write(4*5); // 20
+
+    //console.log()메서드 = 웹 브라우저의 콘솔을 통해 데이터를 출력해 줍니다.
+    console.log(4*5); //20
+
+    //confirm() 메서드 = 사용자에게 간단한 메시지를 보여주고, 확인이나 취소를 누르면 그 결과를 불리언 값으로 반환
+
+    //confirmDialogBox함수를 생성
+    function confirmDialogBox(){
+      var str;//str변수 선언
+      //사용자가 확인을 누르면 true를 반환하고, 취소를 누르면 false를 반환합니다
+      if(confirm("확인이나 취소를 눌러주세요!") == true){
+        //사용자가 확인을 누르면 str변수에 "당신은 확인을 눌렀습니다!"라는 문자열을 할당
+        str = "당신은 확인을 눌렀습니다!";
+      } else {//취소를 누르면 실행, str변수에 "당신은 취소를 눌렀습니다!"라는 문자열을 할당
+        str = "당신은 취소를 눌렀습니다!";
+      }
+      //#txt에 str변수에 할당한 값을 넣어줍니다
+      document.getElementById("txt").innerHTML = str;
+    }
+
+    //prompt()메소드 = 사용자에게 간단한 메시지를 보여주고, 사용자가 입력한 문자열을 반환합니다.
+    function promptDialogBox(){
+      //window.prompt("간단한 메시지" + "입력란의 기본 메시지")
+      var inputStr = prompt("당신의 이름을 입력해 주세요 : ", "홍길동")
+
+      document.getElementById("txt2").innerHTML = "당신의 이름은 " + inputStr + "입니다";
+    }
+  </script>
+</body>
+</html>
