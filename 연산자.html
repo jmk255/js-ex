@@ -4,11 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>연산자</title>
-  <script>
-    
-  </script>
 </head>
 <body>
-  
+  <!--버튼을 클릭하면 increase함수를 호출-->
+  <button onclick="increase()">증가</button>
+  <!--버튼을 클릭하면 decrease함수를 호출-->
+  <button onclick="decrease()">감소</button>
+  <script>
+    //count변수에 0을 할당
+    var count = 0;
+    //increase함수 생성(버튼을 누르면 호출)
+    function increase(){
+      //count값을 1증가 (count = count + 1)
+      count++;
+      //콘솔에 count값을 출력
+      console.log(count);
+    }
+    //decrease함수 생성(버튼을 누르면 호출)
+    function decrease(){
+      //count값을 1감소 (count = count - 1)
+      count--;
+      //콘솔에 count값을 출력
+      console.log(count);
+    }
+
+  </script>
 </body>
 </html>

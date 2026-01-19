@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인 체크</title>
+</head>
+<body>
+  <h1>Login</h1>
+  <form id="loginForm">
+    <label for="username">Username : </label>
+    <input type="text" id="username" name="username" required>
+    <br>
+    <label for="password">Password : </label>
+    <input type="password" id="password" name="password" required>
+    <br>
+    <!--버튼을 클릭하면 checkLogin함수를 호출-->
+    <button type="button" onclick="checkLogin()">Login</button>
+  </form>
+  <p id="msg"></p>
+  <script>
+    //checkLogin함수 생성
+    function checkLogin(){
+      //validUsername과 validPassword변수에 올바른 사용자 이름과 비밀번호를 저장
+      const validUsername = 'user';
+      const validPassword = "pass";
+
+      //사용자가 입력한 username과 password를 변수에 할당
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      //console.log(username, password)
+      //&&연산자를 사용하여 username과 password가 validUsername과 validPassword와 둘다 일치하는지 확인
+      const isLoginValid = (username === validUsername) && (password ===validPassword);
+      console.log(isLoginValid)
+      //username과 password가 올바르면(true) #msg에 "로그인 성공" 이라는 글자를 넣어주고, username과 password중 하나라도 다르면 "로그인 실패" 라는 글자를 넣어줍니다
+      if(isLoginValid){ //true일 경우
+        document.getElementById("msg").innerHTML = "로그인 성공";
+        //css(style)속성인 color속성을 green으로 변경
+        document.getElementById("msg").style.color = "green"
+      } else { //false일 경우
+        document.getElementById("msg").innerHTML = "로그인 실패";
+        //css(style)속성인 color속성을 red으로 변경
+        document.getElementById("msg").style.color = "red"
+      }
+    }
+  </script>
+</body>
+</html>
