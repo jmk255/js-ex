@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>while문</title>
+  <script>
+    //while문 : 조건식의 평가 결과가 참이면 코드 블록을 계속해서 반복 실행한다
+
+    //for문은 반복횟수가 명확할때 주로 사용하고 while문은 반복횟수가 불명확할때 주로 사용한다
+    let i = 0;
+    while(i < 10){ //조건문이 참이면 while문이 반복 실행된다.
+      console.log(i)
+      ++i;
+    }
+
+    let num = prompt("출력할 구구단을 입력하세요", 0);
+    console.log(typeof num)
+    let j = 1;
+    while (j <= 9){
+      document.write(num + "x" + j + "=" + (num*j) + "<br>")
+      j++
+    }
+
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

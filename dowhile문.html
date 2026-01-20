@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>do...while문</title>
+  <script>
+    //do...while문은 코드블록을 먼저 실행하고 조건식을 평가한다. 따라서 코드블록은 무조건 한번이상 실행된다
+    let count = 3;
+
+    while(count < 3){
+      console.log(count);
+      count++
+    }
+
+    do{
+      console.log(count)
+      count++
+    }while(count < 3);
+
+    //1부터 10까지 모든 수를 더함
+    let num1 = 1;
+    let num2 = 10;
+    let sum = 0;
+
+    do{
+      sum += num1;
+      num1++;
+    }while(num1 <= num2);
+
+    console.log(sum)
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
