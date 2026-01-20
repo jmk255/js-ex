@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>switch문</title>
+  <script>
+    //주어진 표현식을 평가하여 그 값과 일치하는 표현식을 갖는 case문으로 실행 흐름을 옮긴다.
+    //case문은 상황을 의미하는 표현식을 지정하고 콜론으로 마치고 그 뒤에 실행할 문들을 위치시킨다
+    //switch문의 표현식과 일치하는 case문이 없다면 실행순서는 default문으로 이동한다
+
+/*
+switch (표현식) {
+  case 표현식1: 
+    switch 문의 표현식과 표현식1이 일치하면 실행될 문; 	 
+    break; 
+  case 표현식2: 
+    switch 문의 표현식과 표현식2가 일치하면 실행될 문; 	 
+    break;
+  default:
+    switch 문의 표현식과 일치하는 case문이 없을 때 실행될 문;
+}
+*/
+  let val = prompt("a, b, c중에 알파벳 하나만 입력하세요","")
+  let answer = "";
+
+  switch(val){
+    case "a" :
+    case "A" : 
+    case "ap" : 
+      answer = "apple";//입력값이 "a"면 answer에 apple을 할당
+      break; //코드 블록 탈출
+    case "b" : 
+    case "B" : 
+      answer = "bird";
+      break;
+    case "c" : 
+    case "C" : 
+      answer = "cat";
+      break;
+    default : answer = "stuff";//입력값이 a,b,c가 아니면 stuff를 answer에 할당
+  }
+  console.log(answer)
+
+  //break를 입력하지 않았을 경우
+  let month = 11; //월을 영어로 변환 (11 -> November)
+  let monthName;
+  switch(month){
+    case 1 : monthName = "January";
+    case 2: monthName = 'February';
+    case 3: monthName = 'March';
+    case 4: monthName = 'April';
+    case 5: monthName = 'May';
+    case 6: monthName = 'June';
+    case 7: monthName = 'July';
+    case 8: monthName = 'August';
+    case 9: monthName = 'September';
+    case 10: monthName = 'October';
+    case 11: monthName = 'November';
+    case 12: monthName = 'December';
+    default: monthName = 'Invalid month';
+  }
+  console.log(monthName)
+  //Invalid month가 출력 된 이유는 break문을 사용하지 않아 switch문을 탈출하지 않고 switch문이 끝날 때까지 이후의 모든 case문과 default문이 실행 됐기 때문이다.(폴스루 fall through)
+  
+  //break문은 코드블록을 탈출하는 역할을 한다
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

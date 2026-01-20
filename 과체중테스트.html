@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>과체중 테스트</title>
+  <style>
+    label, input, button{
+      font-size:20px;
+      margin:10px;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <label for="name">이름 : </label>
+    <input type="text" id="name"><br>
+
+    <label for="height">키 : </label>
+    <input type="text" id="height"><br>
+
+    <label for="weight">몸무게 : </label>
+    <input type="text" id="weight"><br>
+
+    <button type="button" onclick="overWeight()">결과</button>
+  </form>
+  <script>
+    function overWeight(){
+      //이름, 키, 몸무게 값을 변수에 할당
+      const name = document.querySelector("#name").value;
+      const height = document.querySelector("#height").value;
+      const weight = document.querySelector("#weight").value;
+      //console.log(name,height,weight)
+
+      //평균 체중 = (키 - 100) * 0.9
+      const normal_w = (height - 100) * 0.9
+      //console.log(normal_w)
+      // if(weight > normal_w + 5){ //입력한 몸무게가 normal_w + 5보다 크면 과체중
+      //   alert("과체중입니다")
+      // }else if(weight < normal_w - 5){ //입력한 몸무게가 normal_w - 5보다 작으면 저체중
+      //   alert("저체중입니다")
+      // }else{ //그외는 정상체중
+      //   alert("적정체중입니다")
+      // }
+
+      //삼항연산자
+      weight > normal_w - 5 ? (weight < normal_w + 5 ? alert(name + "님은 적정체중입니다") : alert(name + "님은 과체중 입니다")) : alert(name + "님은 저체중입니다");
+    }
+  </script>
+</body>
+</html>
