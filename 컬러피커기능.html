@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>컬러피커기능</title>
+  <style>
+    body{
+      text-align: center;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      height:100vh;
+      background:#000;
+    }
+    div{
+      background:#fff;
+      padding:2rem;
+      border-radius: 1rem;
+      width:14rem;
+      box-shadow:0 0 1rem rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <p id="colorText">컬러 코드 검색</p>
+    <input id="colorPicker" type="color">
+  </div>
+  <script>
+    //input요소를 선택(컬러 픽커)
+    const color = document.querySelector("#colorPicker");
+    //p요소 선택(text를 출력할 요소)
+    const text = document.querySelector("#colorText");
+    console.log(color.value) //선택된 컬러코드를 출력
+
+    //textContent = 텍스트를 적용(innerText와 같다)
+    text.textContent = "컬러 코드 : " + color.value;
+    //템플릿 리터럴 : ``
+    text.textContent = `컬러 코드 : ${color.value}`;
+
+    //기본적인 이벤트 작성
+    //객체(요소 선택자).addEventListener(이벤트명, 실행함수)
+
+    //컬러 피커가 변경되면 (input = input의 값이 변경되면 이벤트 발생)
+    color.addEventListener("input", function(){
+      //p요소에 컬러 코드 변경
+      text.textContent = `컬러 코드: ${color.value}`;
+      //선택한 색을 배경색으로 설정
+      document.body.style.backgroundColor = color.value;
+    })
+  </script>
+</body>
+</html>

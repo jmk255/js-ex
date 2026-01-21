@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>버튼상태변경</title>
+  <style>
+    body{
+      text-align: center;
+      padding:2rem;
+    }
+    label{
+      display:block;
+      margin-bottom:1rem;
+    }
+
+    #btn{
+      font-size:18px;
+      background-color: #0bd;
+      padding: 0.75rem 1.25rem;
+      border-radius: 8px;
+      border:none;
+      cursor:pointer;
+    }
+    #btn:disabled{/*비활성화된 버튼의 스타일*/
+      background-color:#ccc;
+      cursor:default;
+    }
+  </style>
+</head>
+<body>
+  <label>
+    <input id="check" type="checkbox"> 이용약관에 동의
+  </label>
+  <input id="btn" type="submit" value="전송" disabled>
+  <script>
+    //체크박스와 버튼을 선택
+    const isAgreed = document.querySelector("#check");
+    const btn = document.querySelector("#btn");
+    console.log(btn.disabled);//버튼에 disabled속성이 있으면 true, 없으면 false가 출력
+    
+    //체크박스의 상태가 변경(change이벤트)되면 실행
+    isAgreed.addEventListener("change",function(){
+      //console.log(isAgreed.checked); //체크박스가 체크되면 true, 해제되면 false
+      // if(isAgreed.checked === true){
+      //   //체크박스가 체크되면 버튼을 활성화 시킨다
+      //   btn.disabled = false;//활성화
+      // } else {
+      //   //체크박스가 체크해제되면 버튼을 비활성화 시킨다
+      //   btn.disabled = true;//비활성화
+      // }
+
+      //'!'는 반대를 뜻하는 기호
+      //체크박스가 체크되면 true가 반환되는데 앞에 !를 붙여서 false로 변경
+      //체크박스가 해제되면 false가 반환되는데 앞에 !를 붙여서 true변경
+      //결과적으로 체크박스가 해제되면 버튼에 disabled속성 적용, 체크하면 해제
+      btn.disabled = !isAgreed.checked;
+    })
+
+  </script>
+</body>
+</html>

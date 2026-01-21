@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>형변환</title>
+  <script>
+    //1. 문자열을 숫자형으로 변환
+    let s = "123.456";
+
+    console.log(parseInt(s)); //소수점을 버리고 정수만 숫자형으로 반환
+
+    console.log(parseFloat(s)); //소수점까지 숫자로 변환
+
+    console.log(Number(s));//숫자형으로 변환
+    //parseInt와 parseFloat는 숫자로 변환할수 없는 문자를 버림
+
+    //2. 숫자를 문자형으로 변환
+    let n = 123.456;
+
+    console.log(typeof n.toString())
+    console.log(typeof String(n))
+
+    //3. 올림 : ceil, 내림 : floor, 반올림 : round
+    console.log(10/3)
+    console.log(Math.round(10/3))
+    console.log(Math.ceil(10/3))
+    console.log(10/4)
+    console.log(Math.round(10/4))
+    console.log(Math.floor(10/4))
+
+    //4. 난수 메소드 : random
+    console.log(Math.random())//0~1사이의 랜덤한 숫자를 반환
+
+    //MAX와 MIN사이의 값을 랜덤으로 구하는 공식
+    const MAX = 5, MIN = 2;
+
+    for(let i=0; i < 20; ++i){//20번 반복되는 구문
+      let a = Math.floor(Math.random() * (MAX - MIN + 1) + MIN);
+      console.log(a)
+    }
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

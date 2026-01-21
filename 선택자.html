@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>선택자</title>
+</head>
+<body>
+  <div id="div_1" class="red blue yellow">
+    Div1입니다 red blue yellow
+  </div>
+  <div id="div_2" class="green blue red">
+    Div2입니다 green blue red
+  </div>
+  <!--button을 클릭하면 getDiv함수 호출-->
+  <button type="button" onclick="getDiv()">
+    id로 찾기
+  </button>
+  <button type="button" onclick="getClass()">
+    class로 찾기
+  </button>
+  <button type="button" onclick="getTag()">
+    tag name으로 찾기
+  </button>
+  <button type="button" onclick="querySelectorFunc()">
+    querySelector로 찾기
+  </button>
+  <script>
+    //document.getElementById() = 파라미터로 찾으려는 id를 전달하여 해당 요소를 찾을 수 있습니다.
+    function getDiv(){
+      const div1 = document.getElementById("div_1");
+      //innerText메서드로 태그안의 텍스트를 읽어올 수 있습니다.
+      console.log(div1.innerText)
+    }
+
+    //document.getElementsByClassName() : 클래스 이름으로 요소를 찾아서 이 클래스 이름을 가지는 모든 요소 목록을 리턴합니다
+    function getClass(){
+      const div_list = document.getElementsByClassName("red blue");
+      //div_list 요소의 갯수만큼 반복(length = 배열 요소의 갯수를 구할수 있다)
+      for(let i = 0; i < div_list.length; i++){
+        //모든 div_list요소의 텍스트를 출력
+        console.log(div_list[i].innerText)
+      }
+    }
+
+    //document.getElementsByTagName() : 파라미터로 찾으려는 태그를 전달하여 모든 요소목록을 찾아줍니다
+    function getTag(){
+      const div_list = document.getElementsByTagName("div");
+      console.log(div_list)
+    }
+
+    //document.querySelector() : DOM에서 원하는 요소를 찾기 위해서 querySelector를 사용할 수도 있는데, 이 함수는 파라미터로 입력받은 CSS선택자를 사용해서 요소를 찾아줍니다
+
+    //document.querySelectorAll() : querySelector와 같습니다 다만 css선택자로 찾은 모든 요소목록을 리턴합니다
+    function querySelectorFunc(){
+      const id_selector = document.querySelector("#div_2")
+      const class_selector = document.querySelector(".red")
+      console.log(id_selector.innerText)
+    }
+  </script>
+</body>
+</html>

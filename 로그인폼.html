@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인폼</title>
+  <style>
+    *{
+      margin:0; padding:0;
+      box-sizing: border-box;
+    }
+    button{
+      border:none;
+      outline:none;
+      background-color: transparent;
+      cursor:pointer;
+    }
+    .content > button{
+      background-color:#111;
+      color:#fff;
+      padding:10px 30px;
+      margin:10px;
+    }
+
+    .login{
+      position:fixed;
+      inset:0;
+      background-color:rgba(0,0,0,0.8);
+      display:none;/*로그인창을 제거*/
+      justify-content: center;
+      align-items: center;
+    }
+    .login > .container{
+      width:300px;
+      background-color:#fff;
+    }
+    .close{
+      width:100%;
+      height:40px;
+      border-bottom:1px solid #999;
+    }
+    .close > button{
+      font-size:30px;
+      float:right;
+      margin:4px 10px;
+      color:#333;
+    }
+    .login form{
+      padding:30px;
+    }
+    input[type=text]{
+      width:100%;
+      height:40px;
+      border:1px solid #999;
+      outline:none;
+      margin-bottom:20px;
+      text-indent: 10px;
+    }
+    form > button{
+      width:100%;
+      height:40px;
+      background-color:#333;
+      color:#fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="login">
+    <div class="container">
+      <div class="close">
+        <!--pClose는 로그인창을 닫는 함수-->
+        <button onclick="pClose()">&times;</button>
+      </div>
+      <form>
+        <p>
+          <label for="user">사용자명 또는 이메일 주소</label>
+          <input type="text" id="user" name="user">
+        </p>
+        <p>
+          <label for="pw">암호</label>
+          <input type="text" id="pw" name="pw">
+        </p>
+        <button type="submit">로그인</button>
+      </form>
+    </div>
+  </div>
+  <section class="content">
+    <h1>로그인 입력창을 만들어 보세요</h1>
+    <!--popup은 로그인창을 띄우는 함수-->
+    <button onclick="popup()">Login</button>
+  </section>
+  <script>
+    //.login요소를 선택
+    const login = document.querySelector(".login");
+
+    function popup(){//popup함수 생성
+      login.style.display = "flex";//display속성을 flex로 변경하여 화면에 표시
+    }
+
+    function pClose(){//pClose함수 생성
+      login.style.display = "none";//display속성을 none로 변경하여 화면에서 제거
+    }
+
+    //.login영역을 클릭하면 .login이 화면에서 제거되는 구문
+    window.addEventListener("click",function(event){
+      //함수의 인자로 이벤트객체를 전달받음
+      console.log(event.target)
+      //클릭한요소가 login이면 login의 display속성을 none으로 변경
+      if(event.target === login) login.style.display = "none";
+    })
+  </script>
+</body>
+</html>

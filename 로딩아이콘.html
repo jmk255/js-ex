@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로딩아이콘</title>
+  <!--노말라이즈-->
+  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+  <style>
+    /*로딩 이미지*/
+    #loading{
+      position:fixed;
+      inset:0;
+      background-color:#ddd;
+      z-index: 9999;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      transition: 1s;/*변환효과 적용*/
+    }
+    .spinner{
+      width:200px;
+      height:200px;
+    }
+    /*로딩을 완료하면 로딩 이미지를 감추기*/
+    .loaded{
+      opacity:0;
+      visibility: hidden;
+    }
+
+    /*콘텐츠 부분*/
+    .gallery{
+      display:flex;
+      flex-wrap:wrap;
+    }
+    .gallery .item{
+      width:33.3333%;
+      padding:10px;
+    }
+    .gallery img{
+      display:block;
+      width:100%;
+      height:300px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <!--로딩 이미지-->
+  <div id="loading">
+    <img class="spinner" src="img/loading.png" alt="">
+  </div>
+  <!--콘텐츠-->
+  <div class="gallery">
+    <div class="item"><img src="img/img1.jpg" alt=""></div>
+    <div class="item"><img src="img/img2.jpg" alt=""></div>
+    <div class="item"><img src="img/img3.jpg" alt=""></div>
+    <div class="item"><img src="img/img4.jpg" alt=""></div>
+    <div class="item"><img src="img/img5.jpg" alt=""></div>
+    <div class="item"><img src="img/img6.jpg" alt=""></div>
+    <div class="item"><img src="img/img7.jpg" alt=""></div>
+    <div class="item"><img src="img/img8.jpg" alt=""></div>
+    <div class="item"><img src="img/img9.jpg" alt=""></div>
+    <div class="item"><img src="img/img10.jpg" alt=""></div>
+    <div class="item"><img src="img/img11.jpg" alt=""></div>
+    <div class="item"><img src="img/img12.jpg" alt=""></div>
+  </div>
+  <div class="sk-chase">
+  <div class="sk-chase-dot"></div>
+  <div class="sk-chase-dot"></div>
+  <div class="sk-chase-dot"></div>
+  <div class="sk-chase-dot"></div>
+  <div class="sk-chase-dot"></div>
+  <div class="sk-chase-dot"></div>
+</div>
+  <script>
+    //classList메서드 = 클래스를 추가하거나 제거하는 메서드
+
+    //#loading을 선택
+    const loading = document.querySelector("#loading");
+    //모든 리소스 불러오기가 완료되면 #loading에 loaded클래스를 추가해서 로딩 아이콘을 감춰줍니다
+    window.addEventListener("load", function(){
+      loading.classList.add("loaded");
+    })
+  </script>
+</body>
+</html>
