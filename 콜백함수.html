@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>콜백함수</title>
+  <script>
+    //1 test1함수 생성
+    function test(f){ //5 test함수가 호출된다 매개변수 f에 add함수가 전달된다
+      //9 매개변수 f에 multiply함수가 전달
+      let result = f(3, 4);//6 add함수가 호출되고, 그리턴 값이 result에 대입된다
+      //10 multiply함수가 호출되고 리턴값이 result에 대입
+      console.log(result); //7 result출력 값 = 7
+      //11 result출력 값 = 12
+    }
+    //2 add 함수 생성
+    // function add(a, b){
+    //   return a+b;
+    // }
+    const add = function(a, b){
+      return a+b;
+    }
+
+    //3 multiply 함수 생성
+    function multiply(a,b){
+      return a*b;
+    }
+
+    //4 test함수 호출, 이때 파라미터값으로 add 함수를 전달
+    test(add);
+
+    //8 파라미터 값으로 multiply 함수 전달
+    test(multiply);
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

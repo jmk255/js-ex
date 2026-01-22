@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // function 함수이름(파라미터){실행코드}
+    function hello(name) {
+      console.log(`hello ${name}`)
+      // "hello " + name
+    }
+
+    hello("김소원")
+
+    function add(a, b) {
+      return a + b; //함수를 호출한 곳으로 a+b 값을 돌려준다
+    }
+
+    let result = add(10, 20); //30
+    console.log(result)
+
+    function multipleCheck(a, b) {
+      if (a <= 0 || b <= 0) { //a와 b매개변수 중 하나라도 음수면 실행
+        console.log('양수를 입력하세요.');
+        return; //함수 종료
+      }
+      if (a % b == 0) console.log('a는 b의 배수입니다.');
+      else console.log('a는 b의 배수가 아닙니다.');
+    }
+    var a = -10, b = 2;
+    multipleCheck(a, b);
+    a = 10, b = 2;
+    multipleCheck(a, b);
+    a = 10, b = 3;
+    multipleCheck(a, b);
+
+    //파라미터 값이 전달되었는지 확인
+    function add2(a, b){
+      //매개변수 b의 값을 전달받지 않으면 초기값으로 0을 설정
+      //if (b == undefined) b = 0;
+      //if (!b) b = 0;
+      return a + (b || 0);
+    }
+    console.log(add2(3, 4)) //7
+    console.log(add2(3)) //3
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

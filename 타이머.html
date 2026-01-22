@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>타이머</title>
+  <script>
+    // setTimeout(콜백함수, 딜레이, 파라미터1, 파라미터2...)
+    // 딜레이 : 밀리초 후에 콜백함수가 호출된다
+    let id = setTimeout(function(){
+      console.log("1초뒤 실행")
+    },1000);
+
+    clearTimeout(id); //타이머 취소
+
+    function printTime(msg){
+      //콘솔에 msg값과 현재 날짜 정보를 출력
+      console.log(msg, new Date())
+    }
+    // setTimeout(printTime, 1000, "1초 후"); 
+    // setTimeout(printTime, 2000, "2초 후"); 
+    // setTimeout(printTime, 3000, "3초 후"); 
+
+    // setInterval함수 = 밀리초 간격으로 콜백함수가 반복 호출된다
+    // setInterval(콜백함수, 딜레이, 파라미터1, 파라미터2...)
+    let timer = setInterval(printTime, 1000, "1초 간격")
+    clearInterval(timer); //setInterval 함수를 종료
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
