@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>일반시계</title>
+  <style>
+    .frame{
+      display:inline-block;
+      padding:8px;
+      border-radius: 8px;
+      background-color:#000;
+    }
+    .clock{
+      color:#fff;
+      font-family: "Roboto";
+      text-align: center;
+      box-sizing:border-box;
+    }
+    .large_text{font-size:75px;}
+    .small_text{font-size:20px;}
+    .date_box{font-size:15px;}
+
+    .colon{
+      font-size:55px;
+      vertical-align: text-bottom;
+      animation:blink 1s step-start infinite;
+    }
+    @keyframes blink {
+      50%{opacity:0;}
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <div class="clock">
+      <div class="time_box">
+        <span id="hours" class="large_text"></span>
+        <span class="colon">:</span>
+        <span id="minutes" class="large_text"></span>
+        <span id="seconds" class="small_text"></span>
+      </div>
+      <div class="date_box">
+        <span id="year"></span>
+        <span>.</span>
+        <span id="month"></span>
+        <span>.</span>
+        <span id="date"></span>
+        <span id="day"></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function watchClock(){
+      //숫자가 한자리일때 앞에 0을 붙이는 함수
+      function leftPad(n){
+        if(n < 10){ //매개변수 n이 10보다 작으면(한자리 숫자면) 숫자 앞에 0을 붙여서 리턴
+          return `0${n}`;
+        }
+        //한자리 숫자가 아니면 n을 그대로 리턴
+        return n;
+      }
+      //오늘의 요일정보를 글자로 변경하는 함수
+      function getDayText(index){
+        const days = ["일요일","월요일","화요일","수요일","목요일","금요일","토요일"];
+        return days[index];
+      }
+
+      const present = new Date(); //날짜 정보를 present에 저장
+      //현재 시,분,초 정보를 변수에 할당, leftPad함수의 인자로 전달하여 2자리 숫자로 반환
+      const hour = leftPad(present.getHours());
+      const minute = leftPad(present.getMinutes());
+      const second = leftPad(present.getSeconds());
+      //현재 시,분,초 정보를 해당 요소에 텍스트로 적용
+      document.querySelector("#hours").textContent = hour;
+      document.querySelector("#minutes").textContent = minute;
+      document.querySelector("#seconds").textContent = second;
+
+      //현재 연도, 달, 날짜, 요일을 변수에 저장
+      const year = present.getFullYear();
+      const month = leftPad(present.getMonth()+1);
+      const date = leftPad(present.getDate());
+      const day = getDayText(present.getDay());
+
+      //현재 연도, 달, 날짜, 요일정보를 해당 요소에 텍스트로 적용
+      document.querySelector("#year").textContent = year;
+      document.querySelector("#month").textContent = month;
+      document.querySelector("#date").textContent = date;
+      document.querySelector("#day").textContent = day;
+    }
+    watchClock();
+    //1초에 한번씩 watchClock함수를 반복 호출
+    setInterval(watchClock, 1000);
+  </script>
+</body>
+</html>

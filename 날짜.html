@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date()객체</title>
+  <script>
+    //new Date()의 형식으로 Date객체를 생성합니다
+    let today = new Date();
+    console.log("오늘 날짜 정보는 : " + today)
+
+    //요일 정보를 받아올때 숫자로 받기때문에 배열로 만들어서 대입해서 사용
+    let weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+    //Date 객체의 다양한 메서드를 이용하여 현재 시각 및 날짜 정보를 가져옵니다.
+    console.log("연도 : " + today.getFullYear());
+    console.log("월 : " + (today.getMonth()+1)); // 1월 = 0
+    console.log("일 : " + today.getDate());
+    console.log("요일 : " + weekday[today.getDay()]);
+    console.log("시 : " + today.getHours());
+    console.log("분 : " + today.getMinutes());
+    console.log("초 : " + today.getSeconds());
+
+    //특정한 날짜에 대한 정보를 갖는 Date 객체 생성
+    //6개의 파라미터(연,월,일,시,분,초)를 입력하여 특정 날짜 정보를 저장합니다.
+    let birthDay = new Date(2026,4,5,10,10,10);
+    console.log(birthDay)
+    //날짜 정보 설정
+    today.setFullYear(2030);
+    today.setMonth(10);
+    today.setDate(11);
+    today.setHours(11);
+    today.setMinutes(11);
+    today.setSeconds(11);
+    console.log("특정 날짜로 저장:" + today)
+    
+    //시간 정보의 연산
+    let date = new Date(2026,0,22);
+    console.log("날짜 정보는 : "+ date)
+    //시간 정보(getHours())를 읽은 후, 35시간을 더하고 setHours()를 이용하여 저장
+    date.setHours(date.getHours() + 35)
+    console.log("현재 날짜 +35시간 이후의 날짜는 : " + date)
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스타일조작</title>
+  <style>
+    .container{
+      display:flex;
+    }
+    .container > div{
+      width:100px; height:100px;
+      margin:10px; 
+      background-color:lightcoral;
+      border-radius: 50%;
+      cursor:pointer;
+    }
+    .container > div:nth-child(2){
+      background-color:lightblue;
+    }
+  </style>
+</head>
+<body>
+  <div style="color: red;">Hello World!</div>
+  <div class="container">
+    <div></div>
+    <div></div>
+  </div>
+  <script>
+    const $div = document.querySelector("div");
+
+    //인라인 스타일 취득
+    console.log($div.style); //CSSStyleDeclaration {0: "color,..."}
+    //인라인 스타일 변경
+    $div.style.color = "blue";
+
+    //인라인 스타일 추가
+    //CSS 프로퍼티의 값은 반드시 단위를 지정해야한다(px, em, %, vw 등)
+    $div.style.width = "100px";
+    $div.style.height = "100px";
+    //style프로퍼티를 참조하려면 프로퍼티는 카멜케이스를 따른다
+    $div.style.backgroundColor = "gold";
+    
+    //케밥 케이스의 css프로퍼티를 그대로 사용하려면 마침표 표기법 대신 대괄호 표기법을 사용한다
+    $div.style["background-color"] = "gold";
+
+    //클릭이벤트
+    document.querySelector(".container > div:nth-child(1)").addEventListener("click", function(){
+      //이벤트가 발생한 객체(첫번째 div요소)를 선택하여 배경색을 변경
+      this.style.backgroundColor = "lightgreen";
+    })
+
+    //mouseover와 mouseout이벤트 생성
+    const div2 = document.querySelector(".container > div:nth-child(2)");
+    //mouseover : 해당 요소에 마우스를 올리면 구문 실행
+    div2.addEventListener("mouseover", function(){
+      this.style.borderRadius = 0;
+    })
+    //mouseout : 해당 요소에서 마우스가 떠나면 구문 실행
+    div2.addEventListener("mouseout", function(){
+      this.style.borderRadius = "50%";
+    })
+  </script>
+</body>
+</html>
