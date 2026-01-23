@@ -88,7 +88,67 @@
       }
     })
 
+    //fadeOut버튼에 클릭이벤트 생성
+    document.querySelector("#btn4").addEventListener("click", function(){
+      const parentNextStyle = this.parentNode.nextElementSibling.style;
 
+      //1초동안 투명도가 1에서 0으로 서서히 변경
+      parentNextStyle.transition = "opacity 1s";
+      parentNextStyle.opacity = "0";
+      //1초 후에 display속성을 none으로 변경
+      setTimeout(function(){
+        parentNextStyle.display = "none";
+      },1000)
+    })
+
+    //fadeIn버튼에 클릭이벤트 생성
+    document.querySelector("#btn5").addEventListener("click", function(){
+      const parentNextStyle = this.parentNode.nextElementSibling.style;
+      //display를 block으로 변경
+      parentNextStyle.display = "block";
+
+      //0.001초 후에 실행
+      setTimeout(function(){
+        //opacity를 0에서 1로 변경
+        parentNextStyle.transition = "opacity .75s";
+        parentNextStyle.opacity = "1";
+      },1)
+    })
+
+    //fadeToggle버튼에 클릭이벤트 생성
+    document.querySelector("#btn6").addEventListener("click", function(){
+      const parentNext = this.parentNode.nextElementSibling;
+      parentNext.style.transition = "opacity .5s";
+
+      if(getComputedStyle(parentNext).opacity === "0"){
+        //해당 요소의 opacity가 0이면 실행
+        parentNext.style.display = "block"; //display를 block으로 변경
+        setTimeout(function(){ //0.001초 후에 opacity를 1로 변경
+          parentNext.style.opacity = "1";
+        },1)
+      }else{
+        //해당 요소의 opacity가 1이면 실행
+        parentNext.style.opacity = "0"; //opacity를 0으로 변경
+        setTimeout(function(){
+          parentNext.style.display = "none";//display를 none으로 변경
+        },500)
+      }
+    })
+
+    //fadeTo(0.3)버튼에 클릭이벤트 생성
+    document.querySelector("#btn7").addEventListener("click",function(){
+      const parentNextStyle = this.parentNode.nextElementSibling.style;
+
+      parentNextStyle.transition = "opacity .75s";
+      parentNextStyle.opacity = "0.3";
+    })
+    //fadeTo(1)버튼에 클릭이벤트 생성
+    document.querySelector("#btn8").addEventListener("click",function(){
+      const parentNextStyle = this.parentNode.nextElementSibling.style;
+
+      parentNextStyle.transition = "opacity .75s";
+      parentNextStyle.opacity = "1";
+    })
   </script>
 </body>
 
