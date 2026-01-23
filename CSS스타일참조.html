@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css스타일 참조</title>
+  <style>
+    body{color:red;}
+    .box{
+      width:100px;
+      height:100px;
+      background-color:cornflowerblue;
+      border:1px solid black;
+    }
+    .box::before{
+      content:"Hello";
+    }
+  </style>
+</head>
+<body>
+  <div class="box">Box</div>
+  <script>
+    /*
+    selector.style.display  
+    style프로퍼티는 인라인 스타일만 반환한다
+    
+    html요소에 적용되어 있는 모든 CSS스타일을 참조해야할 경우 .getComputedStyle()메서드를 사용한다
+
+    .getComputedStyle(element, [pseudo]) = 첫번째 인자로 전달한 요소노드에 적용되어 있는 평가된 스타일을 반환
+    */
+    const $box = document.querySelector(".box");
+    //.box요소에 적용된 모든 css스타일을 담고 있는 CSSSTyleDeclaration 객체를 취득
+    const computedStyle = window.getComputedStyle($box);
+    console.log(computedStyle)
+
+    //임베딩 스타일
+    console.log(computedStyle.width)
+    console.log(computedStyle.height)
+    console.log(computedStyle.backgroundColor)
+    console.log(computedStyle.border)
+    //상속 스타일
+    console.log(computedStyle.color)
+
+    //가상요소(의사 요소) ::before의 스타일 취득
+  const boxBefore = window.getComputedStyle($box, "::before");
+    console.log(boxBefore.content)
+    </script>
+</body>
+</html>

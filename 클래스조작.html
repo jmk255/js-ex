@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>클래스조작</title>
+  <style>
+    .box{
+      width:100px;
+      height:100px;
+      background-color:antiquewhite;
+    }
+    .red{color:red;}
+    .blue{color:blue;}
+  </style>
+</head>
+<body>
+  <div class="box red">Hello World</div>
+  <script>
+    const $box = document.querySelector(".box");
+
+    //.box 요소의 class 어트리뷰트 값을 취득
+    console.log($box.className); //'box red'
+
+    //.box요소의 class 어트리뷰트 값 중에서 red만 blue로 변경
+    //selector.className.replace("변경할 클래스이름", "변경될 클래스이름")
+    $box.className = $box.className.replace("red", "blue");
+
+    console.log($box.classList); //classList가 반환하는 DOMTokenList 객체는 HTMLCollection과 NodeList와 같이 노드 객체의 상태 변화를 실시간으로 반영하는 살아 있는(live) 객체다
+    $box.classList.replace("blue", "red");
+
+    //클래스 추가
+    $box.classList.add("foo", "baz"); //foo라는 클래스를 추가
+
+    //클래스 제거
+    $box.classList.remove("foo", "baz");
+    //$box.className = ""; //모든 클래스 제거
+
+    //인수로 전달한 index에 해당하는 클래스를 반환(0 = 첫번째 클래스, 1 = 두번째 클래스)
+    console.log($box.classList.item(0)); //box
+    console.log($box.classList.item(1)); //red
+
+    //인수로 전달한 문자열과 일치하는 클래스가 포함되어 있으면 true를 없으면 false를 반환
+    console.log($box.classList.contains("box"));//true
+    console.log($box.classList.contains("blue"));//false
+
+    //인수로 전달한 문자열과 일치하는 클래스가 존재하면 제거하고, 존재하지 않으면 추가
+    $box.classList.toggle("foo");
+    $box.classList.toggle("foo");
+
+  </script>
+</body>
+</html>

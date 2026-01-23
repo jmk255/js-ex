@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>다운메뉴</title>
+  <style>
+    *{margin:0; padding:0; box-sizing: border-box;}
+    ul,li{list-style: none;}
+    a{text-decoration: none;}
+
+    header{
+      width:960px;
+      height:150px;
+      margin:auto;
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+      padding:0 10px;
+    }
+
+    header #gnb{
+      display:flex;
+    }
+    header #gnb li{
+      position:relative;
+    }
+    header #gnb a{
+      display:block;
+      width:200px;
+      height:40px;
+      line-height: 40px;
+      background-color:rgba(255,255,255, 0.7);
+      text-align: center;
+      color:#333;
+    }
+    header #gnb li:hover > a{
+      background-color:green;
+      color:#fff;
+    }
+    header #gnb .sub li:hover a{
+      background-color: darkgreen;
+    }
+    .sub{
+      position:absolute;
+      max-height:0;
+      transition:max-height .5s;
+      overflow:hidden;
+    }
+
+    .slide{
+      width:960px;
+      height:300px;
+      margin:auto;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="logo">
+      <img src="img/logo.png" alt="logo" width="220">
+    </h1>
+    <ul id="gnb">
+      <li>
+        <a href="#">MainMenu1</a>
+        <ul class="sub">
+          <li><a href="#">SubMenu1</a></li>
+          <li><a href="#">SubMenu2</a></li>
+          <li><a href="#">SubMenu3</a></li>
+          <li><a href="#">SubMenu4</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">MainMenu2</a>
+        <ul class="sub">
+          <li><a href="#">SubMenu1</a></li>
+          <li><a href="#">SubMenu2</a></li>
+          <li><a href="#">SubMenu3</a></li>
+          <li><a href="#">SubMenu4</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">MainMenu3</a>
+        <ul class="sub">
+          <li><a href="#">SubMenu1</a></li>
+          <li><a href="#">SubMenu2</a></li>
+          <li><a href="#">SubMenu3</a></li>
+          <li><a href="#">SubMenu4</a></li>
+          <li><a href="#">SubMenu5</a></li>
+          <li><a href="#">SubMenu6</a></li>
+          <li><a href="#">SubMenu7</a></li>
+          <li><a href="#">SubMenu8</a></li>
+          <li><a href="#">SubMenu9</a></li>
+        </ul>
+      </li>
+    </ul>
+  </header>
+
+  <section>
+    <article class="slide">
+      <img src="img/images.jpg" alt="">
+    </article>
+  </section>
+  <script>
+    /*내비의 모든 메뉴요소를 선택*/
+    const items = document.querySelectorAll("#gnb > li");
+
+    for(const item of items){//모든 메뉴요소를 순회
+      //메뉴에 마우스를 올리면 구문 실행
+      item.addEventListener("mouseenter", function(){
+        //메뉴의 마지막 자손요소(.sub요소)의 maxHeight값을 서브메뉴의 최종 높이로 설정
+        item.lastElementChild.style.maxHeight = item.lastElementChild.scrollHeight + "px";
+      });
+      //메뉴에서 마우스가 떠나면 구문 실행
+      item.addEventListener("mouseleave", function(){
+        //메뉴의 마지막 자손요소(.sub요소)의 maxHeight값을 0px로 설정
+        item.lastElementChild.style.maxHeight = "0px";
+      })
+    }
+  </script>
+</body>
+</html>
