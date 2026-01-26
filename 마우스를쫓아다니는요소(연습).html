@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마우스를 쫓아다니는 요소(연습)</title>
+  <style>
+    *{margin:0; padding:0;}
+    html, body{height:100%;}
+    section{
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      background:url(img/bg1.jpg) right center/cover;
+      position:relative;
+    }
+    article{
+      position:absolute;
+      top:50%;
+      left:300px;
+      z-index: 10;
+    }
+    article p{
+      font-size:50px;
+      line-height:1;
+      text-shadow:1px 1px 1px #222;
+      color:#d4164c;
+    }
+
+    .p11{
+      position:absolute;
+      bottom:20px;
+      right:20px;
+    }
+    .p12{
+      position:absolute;
+      bottom:-40px;
+      right:130px;
+    }
+    .p13{
+      position:absolute;
+      top:180px;
+      right:60px;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <!--슬로건-->
+    <article>
+      <p>FULL BLOSSOM</p>
+      <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+    </article>
+    <!--전면 이미지 오브젝트-->
+    <img src="img/obj11.png" alt="" class="p11">
+    <img src="img/obj12.png" alt="" class="p12">
+    <img src="img/obj13.png" alt="" class="p13">
+  </section>
+  <script>
+    const section = document.querySelector("section");
+    section.addEventListener("mousemove", function(e){
+      //마우스의 위치값을 변수에 지정(pageX,Y는 이벤트가 발생된 요소(section)을 기준으로 위치값을 구해줍니다)
+      let x = e.pageX;
+      let y = e.pageY;
+      //위치값을 이미지요소의 translate값으로 적용, 이때 임의의 숫자로 값을 나눠서 이동값을 축소시킴(-값을 대입하면 반대 방향으로 이동시킴)
+      document.querySelector(".p11").style.transform = `translate(${x/30}px, ${y/30}px)`;
+      document.querySelector(".p12").style.transform = `translate(${-x/20}px, ${-y/20}px)`;
+      document.querySelector(".p13").style.transform = `translate(${-x/20}px, ${-y/20}px)`;
+    })
+  </script>
+</body>
+</html>

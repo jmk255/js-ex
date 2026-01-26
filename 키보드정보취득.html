@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키보드 정보 취득</title>
+</head>
+<body>
+  <input type="text">
+  <em class="msg"></em>
+  <script>
+    //버튼정보 : altKey, ctrlKey, shiftKey, metaKey, key, keyCode
+    const input = document.querySelector("input[type=text]");
+    const msg = document.querySelector(".msg");
+    //input요소에 keyup이벤트(버튼을 눌렀다 뗄때) 생성
+    input.addEventListener("keyup", function(e){
+      console.log(e.keyCode)
+      //e.key는 입력한 키 값을 문자열로 반환한다
+      //입력한 키가 'Enter', 즉 엔터 키가 아니면 무시하고, 엔터키면 현재까지 입력한 값을 msg에 출력
+      if(e.key !== "Enter") return; //입력한 키가 엔터가 아니면 함수 종료
+
+      //msg의 text로 input의 입력값을 입력
+      msg.textContent = e.target.value;//e.target은 이벤트가 발생된 객체
+      //입력창에 입력한 값을 비워줍니다
+      e.target.value = "";
+
+    });
+  </script>
+</body>
+</html>
