@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마우스를 따라다니는 overlay</title>
+  <style>
+    *{margin:0; padding:0;}
+    #works{
+      width:1200px;
+      margin:auto;
+      display:flex;
+      position:relative;
+    }
+    #works .box{
+      width:25%;
+      height:280px;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      background-position: center;
+      background-size:cover;
+      cursor:pointer;
+    }
+    #works .box:nth-of-type(1){
+      background-image:url(img/image01.jpg);
+    }
+    #works .box:nth-of-type(2){
+      background-image:url(img/image02.jpg);
+    }
+    #works .box:nth-of-type(3){
+      background-image:url(img/image03.jpg);
+    }
+    #works .box:nth-of-type(4){
+      background-image:url(img/image04.jpg);
+    }
+
+    #works .box h1{
+      opacity:0;
+      color:#fff;
+      position:relative;
+      z-index: 2;
+      transition:opacity 0.3s;
+    }
+    #works .box:hover h1{
+      opacity:1;
+      animation: scale 0.3s;
+    }
+    @keyframes scale {
+      50%{scale:1.5;}
+    }
+
+    #works .overlay{
+      position:absolute;
+      width:300px;
+      height:280px;
+      background-color:rgba(0,0,0,0.5);
+      top:0; left:0;
+      z-index: 1;
+      /*마우스가 인식하지 못하도록 설정*/
+      pointer-events: none;
+      opacity:0;
+      transition:all 0.3s;
+    }
+  </style>
+</head>
+<body>
+  <section id="works">
+    <div class="overlay"></div>
+    <article class="box"><h1>TEXT</h1></article>
+    <article class="box"><h1>TEXT</h1></article>
+    <article class="box"><h1>TEXT</h1></article>
+    <article class="box"><h1>TEXT</h1></article>
+  </section>
+  <script>
+    const boxes = document.querySelectorAll(".box");
+    //.offsetWidth = 요소의 실제 넓이(border와 padding포함)
+    const boxWd = boxes[0].offsetWidth;//첫번째 box의 넓이를 지정
+    const overlay = document.querySelector(".overlay");
+    for(const box of boxes){//모든 box요소를 순회 하면서 반복실행
+      //모든 box요소에 mouseover이벤트 생성
+      box.addEventListener("mouseover", function(){
+        overlay.style.opacity = 1;//overlay의 opacity를 1로 변경하여 표시
+        //boxes는 배열이 아니라 NodeList이기 때문에 Array.from()메서드로 배열로 변경하여 indexOf()메서드로 해당 box요소의 배열순번(index)을 참조하여 idx변수에 할당합니다. 
+        const idx = Array.from(boxes).indexOf(box);
+        //overlay의 left속성값으로 box의 넓이 * idx를 적용하여 위치를 변경
+        overlay.style.left = boxWd*idx + "px";
+      })
+      //모든 box요소에 mouseout이벤트 생성
+      box.addEventListener("mouseout", function(){
+        overlay.style.opacity = 0;//overlay의 opacity를 0로 변경하여 가려줌
+        //마우스가 떠나면 overlay를 초기위치로 변경
+        overlay.style.left = "0px";
+      })
+    }
+  </script>
+</body>
+</html>

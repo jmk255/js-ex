@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마우스를 쫓아다니는 요소</title>
+  <style>
+    #m1{
+      position:absolute;
+      top:50px; left:30px;
+    }
+    #m2{
+      position:absolute;
+      top:300px; right:300px;
+    }
+    #m3{
+      position:absolute;
+      bottom:80px; left:150px;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <h1 id="m1"><img src="img/1.png" alt="1번 키티"></h1>
+    <h1 id="m2"><img src="img/2.png" alt="2번 키티"></h1>
+    <h1 id="m3"><img src="img/3.png" alt="3번 키티"></h1>
+  </div>
+  <script>
+    //window에 mousemove이벤트 생성
+    window.addEventListener("mousemove",function(e){
+      let x = e.clientX; //x좌표(스크롤 이동값 제외)
+      let y = e.clientY; //y좌표(스크롤 이동값 제외)
+      const m1 = document.querySelector("#m1");
+      const m2 = document.querySelector("#m2");
+      const m3 = document.querySelector("#m3");
+      //#m1의 transform:translate속성값으로 x,y변수값을 대입, 이때 위치값을 임의의 숫자로 나눠서 이동값을 축소 시킴
+      m1.style.transform = `translate(${x / 20}px, ${y / 20}px)`;
+      m2.style.transform = `translate(${-(x / 20)}px, ${-(y / 20)}px)`;
+      m3.style.transform = `translate(${x/50}px, ${y/50}px)`;
+    })
+  </script>
+</body>
+</html>

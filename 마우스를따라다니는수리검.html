@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마우스를 따라다니는 수리검</title>
+  <style>
+    *{
+      margin:0; padding:0;
+      cursor: none;/*기본 커서모양을 제거*/
+    }
+    body{overflow:hidden;}
+
+    ul{
+      list-style:none;
+      padding:20px 0;
+      display:flex;
+      justify-content: center;
+      gap:80px;
+    }
+
+    #cursor{
+      position:fixed;
+      pointer-events: none;/*마우스가 요소를 인식하지 못하게 설정*/
+      z-index: 9999;
+    }
+
+    #cursor img{
+      display:block;
+      width:50px;
+      height:50px;
+    }
+  </style>
+</head>
+<body>
+  <div id="cursor">
+    <img src="img/shuriken.png" alt="수리검">
+  </div>
+  <nav>
+    <ul class="links">
+      <li><a href="#">메뉴</a></li>
+      <li><a href="#">메뉴</a></li>
+      <li><a href="#">메뉴</a></li>
+      <li><a href="#">메뉴</a></li>
+    </ul>
+  </nav>
+  <script>
+    const cursor = document.querySelector("#cursor");
+
+    window.addEventListener("mousemove", function(e){
+      //마우스의 위치값을 변수에 지정
+      let x = e.clientX;
+      let y = e.clientY;
+      //마우스의 위치값을 cursor의 위치값(top,left)으로 대입
+      //이미지의 위치가 커서의 가운데로 오도록 이미지넓이의 절반값만큼 위치값에서 빼줍니다.
+      cursor.style.left = `${x-25}px`;
+      cursor.style.top = `${y-25}px`;
+    });
+
+    //링크 메뉴 위에 마우스를 올리면 이미지가 회전
+    const links = document.querySelectorAll(".links li");
+    //for of문으로 모든 li요소를 순회하면서 반복실행
+    for (const link of links){
+      //링크 버튼에 mouseover이벤트 생성
+      link.addEventListener("mouseover", function(){
+        console.log(cursor.querySelector("img"))
+        //이미지 요소에 변환효과 적용
+        cursor.querySelector("img").style.transition = "transform 0.3s";
+        //커서 이미지에 transform:rotate속성을 적용하여 이미지를 회전시킴
+        cursor.querySelector("img").style.transform = "rotate(180deg) scale(1.2)";
+      })
+      //링크 버튼에 mouseout이벤트 생성
+      link.addEventListener("mouseout", function(){
+        //이미지 요소에 변환효과 적용
+        cursor.querySelector("img").style.transition = "transform 0.3s";
+        //커서 이미지에 transform:rotate속성을 초기값으로 적용하여 이미지를 초기상태로 돌림
+        cursor.querySelector("img").style.transform = "rotate(0deg) scale(1)";
+      })
+    }
+  </script>
+</body>
+</html>
