@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>연속애니메이션</title>
+  <style>
+    div{
+      width:320px;
+      height:240px;
+      position:relative;
+      background:url(img/bg.jpg);
+    }
+    div img{
+      position:absolute;
+      display:none;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <script>
+    //div요소를 선택
+    const parent = document.querySelector("div");
+
+    //0부터 20번까지 총 21개의 이미지를 div요소에 추가
+    for(let i=0; i<21; i++){ //0부터 20까지 21번 반복되는 구문
+      //innerHTML로 div요소의 내부에 img태그를 삽입
+      parent.innerHTML += `<img src='img/seq/seq${i}.png' alt='img${i}'>`;
+    }
+    //img태그의 맨처음 이미지만 보이게 설정
+    parent.firstElementChild.style.display = "inline";
+
+    //count 변수는 setInterval에서 주기적으로 함수를 호출할때 img위치가 저장됨
+    let count = 0;
+    //clearInterval시(setInterval종료시) 필요
+    let timer;
+    //div요소에 mouseover이벤트 생성
+    parent.addEventListener("mouseover", function(){
+      //timer변수에 setInterval함수가 있으면 clearInterval로 setInterval메서드를 종료해주는 코드
+      if(timer) clearInterval(timer)
+      //0.05초마다 한번씩 nextFrame함수를 반복호출
+      timer = setInterval(nextFrame, 50);
+    });
+    //모든 이미지 요소를 선택
+    const imgs = document.querySelectorAll("div > img");
+    //nextFrame함수 생성
+    function nextFrame(){
+      //이미지 순번이 count와 같은 순번요소를 선택(초기값은 0)하여 display를 none으로 변경
+      imgs[count].style.display = "none";
+      //count값을 1증가시킴
+      count+=1;
+      //count가 20보다 크면 count를 20으로 고정, clearInterval호출하여 setInterval메서드를 종료
+      if(count > 20){
+        count = 20;
+        clearInterval(timer);
+      }
+      //imgs의 count(1증가 시킨후)값에 해당하는 요소를 선택하여 display를 inline으로 변경
+      imgs[count].style.display = "inline";
+    }
+
+    //parent요소에 mouseout이벤트 생성
+    parent.addEventListener("mouseout",function(){
+      if(timer) clearInterval(timer);
+      //0.05초마다 prevFrame함수를 반복 호출
+      timer = setInterval(prevFrame, 50);
+    })
+
+    //prevFrame함수 생성(nextFrame함수를 역으로 사용하여 역재생 되는 효과를 구현)
+    function prevFrame(){
+      //현재 순번의 이미지 요소를 가려줌
+      imgs[count].style.display = "none";
+      //count값을 1감소 시킴
+      count-=1
+      //count가 0보다 작으면 count를 0으로 고정, clearInterval로 setInterval메서드를 종료
+      if(count < 0){
+        count = 0;
+        clearInterval(timer);
+      }
+      //count값에 해당하는 순번의 이미지 요소를 화면에 표시
+      imgs[count].style.display = "inline";
+    }
+  </script>
+</body>
+</html>
