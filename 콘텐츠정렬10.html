@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>콘텐츠정렬10</title>
+  <link href="reset.css" rel="stylesheet">
+  <style>
+    .gallery {
+      width: 1040px;
+      padding: 40px 10px;
+      margin: auto;
+      display: flex;
+      gap: 20px;
+    }
+
+    .color-gallery {
+      width: 500px;
+      height: 520px;
+      position: relative;
+    }
+
+    .color-gallery .slide {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      visibility: hidden;
+      opacity: 0;
+      transition: .5s;
+    }
+
+    .color-gallery .slide.on {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .color-gallery .txt {
+      width: 100%;
+      height: 120px;
+      background-color: rgba(0, 0, 0, 0.8);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    .color-gallery .txt p {
+      color: #fff;
+      font-size: 24px;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .color-gallery .dot {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .color-gallery .dot>li {
+      width: 15px;
+      height: 15px;
+      background-color: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: 0.3s;
+    }
+
+    .color-gallery .dot>li:hover {
+      opacity: 1;
+    }
+
+    .color-gallery .dot>li.active {
+      opacity: 1;
+      width: 50px;
+    }
+
+    .thumbs {
+      width: 500px;
+      display: flex;
+      flex-wrap: wrap;
+      /*줄바꿈 허용*/
+      gap: 20px;
+    }
+
+    .thumbs>.box {
+      width: 240px;
+      height: 250px;
+      position: relative;
+    }
+
+    .thumbs>.box:nth-child(1) {
+      background: url(images/img1.png);
+    }
+
+    .thumbs>.box:nth-child(2) {
+      background: url(images/img2.png);
+    }
+
+    .thumbs>.box:nth-child(3) {
+      background: url(images/img3.png);
+    }
+
+    .thumbs>.box:nth-child(4) {
+      background: url(images/img4.png);
+    }
+
+    .thumbs>.box>p {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+    }
+
+    .ad-banner {
+      width: 1040px;
+      padding: 0 10px;
+      margin: auto;
+      display: flex;
+      gap: 20px;
+    }
+
+    .l-banner {
+      width: 500px;
+      height: 160px;
+      background: gold url(images/banner1.png) 85% 50% no-repeat;
+      padding: 20px 50px;
+    }
+
+    .l-banner h1 {
+      font-size: 24px;
+      font-weight: normal;
+      line-height: 1.6;
+    }
+
+    .r-banner {
+      width: 500px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .r-banner img {
+      width: 240px;
+      height: 70px;
+      border: 1px solid #999;
+      transition: transform 0.3s;
+    }
+
+    .r-banner img:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+
+<body>
+  <section class="gallery">
+    <article class="color-gallery">
+      <div class="color-img">
+        <div class="slide on">
+          <img src="images/color.png" alt="">
+        </div>
+        <div class="slide">
+          <img src="images/color1.png" alt="">
+        </div>
+        <div class="slide">
+          <img src="images/color2.png" alt="">
+        </div>
+        <div class="slide">
+          <img src="images/color3.png" alt="">
+        </div>
+      </div>
+      <div class="txt">
+        <p>Lorem Ipsum</p>
+        <ul class="dot">
+          <li class="active"></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+    </article>
+    <article class="thumbs">
+      <div class="box">
+        <p>Lorem Ipsum</p>
+      </div>
+      <div class="box">
+        <p>Lorem Ipsum</p>
+      </div>
+      <div class="box">
+        <p>Lorem Ipsum</p>
+      </div>
+      <div class="box">
+        <p>Lorem Ipsum</p>
+      </div>
+    </article>
+  </section>
+  <section class="ad-banner">
+    <article class="l-banner">
+      <h1>
+        <b>디자인하우스</b>에서<br>
+        더 많은 인사이트를<br>
+        발견하세요!
+      </h1>
+    </article>
+    <article class="r-banner">
+      <img src="images/banner2.png" alt="">
+      <img src="images/banner3.png" alt="">
+      <img src="images/banner4.png" alt="">
+      <img src="images/banner5.png" alt="">
+    </article>
+  </section>
+
+  <script>
+    //슬라이드 이미지의 순서를 저장할 변수
+    let slideIndex = 0;
+
+    //setInterval로 자동 슬라이드 기능 구현시 필요
+    let timer;
+
+    //dot버튼을 Nodelist로 선택
+    const dots = document.querySelectorAll(".dot > li");
+    //슬라이드 이미지 요소를 NodeList로 모두 선택
+    const slides = document.querySelectorAll(".slide");
+    //슬라이드 이미지 요소 전체를 감싸는 요소
+    const container = document.querySelector(".color-gallery");
+
+    //모든 dot버튼에 클릭이벤트 생성(버튼요소의 인덱스도 인자로 전달)
+    dots.forEach((dot, idx) => {
+      dot.addEventListener("click", () => {
+        slideIndex = idx;
+        showSlides();
+      })
+    })
+
+    //showSlides함수 생성
+    const showSlides = () => {
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove("on");
+        dots[i].classList.remove("active");
+      }
+
+      slides[slideIndex].classList.add("on");
+      dots[slideIndex].classList.add("active");
+    }
+
+    //자동 슬라이드 = 3초에 한번씩 반복 실행 
+    timer = setInterval(function () {
+      ++slideIndex;
+      if (slideIndex >= slides.length) {
+        slideIndex = 0;
+      }
+      showSlides();
+    }, 3000)
+    
+
+    //container에 mouseover 이벤트 생성
+    container.addEventListener("mouseover", () => {
+      clearInterval(timer);
+    })
+
+    container.addEventListener("mouseout", () => {
+      timer = setInterval(function () {
+        ++slideIndex;
+        if (slideIndex >= slides.length) {
+          slideIndex = 0;
+        }
+        showSlides();
+      }, 3000)
+    })
+  </script>
+</body>
+
+</html>

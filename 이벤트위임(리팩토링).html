@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이벤트위임(리팩토링)</title>
+</head>
+<body>
+  <button type="button" class="btn1">버튼추가</button>
+  <button type="button" class="btn2">버튼제거</button>
+
+  <ul class="itemlist"> 
+    <li><input type="button" value="button1"></li>
+    <li><input type="button" value="button2"></li>
+  </ul>
+  <script>
+    //.itemlist요소 선택
+    const itemList = document.querySelector(".itemlist");
+
+    //itemlist에 click이벤트 생성 alert으로 itemlist노드 안에 있는 클릭한 input의 value값을 출력
+    itemList.addEventListener("click", (e) => {
+      alert(`${e.target.value} 클릭`)
+    })
+
+    //btn추가
+    //button글자 뒤에 붙는 순번
+    let i = 2;
+    const btn1 = document.querySelector(".btn1");
+    btn1.addEventListener("click", () => {
+      i++; //i값을 1증가 시킴
+      //li요소 생성
+      const li = document.createElement("li");
+      //input요소 생성
+      const input = document.createElement("input");
+      //setAttribute(속성이름, 속성값), getAttribute() = 어트리뷰트를 설정 및 참조하는 메서드
+      //input요소에 type속성과 value속성을 설정
+      input.setAttribute("type", "button");
+      input.setAttribute("value", "button"+i);//뒤에 붙는 숫자를 i로 변경
+  
+      //생성한 li요소에 input요소 추가
+      li.appendChild(input);
+      //.itemlist요소에 생성한 li요소를 추가
+      itemList.appendChild(li);
+    })
+
+    //버튼 제거
+    const btn2 = document.querySelector(".btn2");
+    
+    btn2.addEventListener("click", () => {
+      //마지막 요소를 선택해서 remove()메서드로 제거
+      const li = document.querySelector(".itemlist > li:last-child");
+      li.remove();
+      i--; //i값을 1감소 시킴
+    })
+  </script>
+</body>
+</html>

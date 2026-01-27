@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>슬라이드</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #slider-container {
+      width: 100%;
+      max-width: 600px;
+      margin: auto;
+      height: 350px;
+      position: relative;
+    }
+
+    .slider {
+      width: 100%;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 350px;
+      width: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.5s;
+    }
+
+    .slide.on {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .slider img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .pager {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      background-color: #bbb;
+      border-radius: 50%;
+      margin: 0 2px;
+      cursor: pointer;
+      transition: background-color 0.6s;
+    }
+
+    .dot:hover {
+      background-color: #717171;
+    }
+
+    .dot.active {
+      background-color: tomato;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="slider-container">
+    <div class="slider">
+      <div class="slide fade on">
+        <img src="img/slide1.jpg" alt="slide1">
+      </div>
+      <div class="slide fade">
+        <img src="img/slide2.jpg" alt="slide2">
+      </div>
+      <div class="slide fade">
+        <img src="img/slide3.jpg" alt="slide3">
+      </div>
+      <div class="slide fade">
+        <img src="img/slide4.jpg" alt="slide4">
+      </div>
+    </div>
+    <div class="pager">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+  <script>
+    //슬라이드 이미지의 순서를 저장할 변수
+    let slideIndex = 0;
+
+    //setInterval로 자동 슬라이드 기능 구현시 필요
+    let timer;
+
+    //dot버튼을 Nodelist로 선택
+    const dots = document.querySelectorAll(".dot");
+
+    //모든 dot버튼에 클릭이벤트 생성(버튼요소의 인덱스도 인자로 전달)
+    dots.forEach((dot, idx) => {
+      dot.addEventListener("click", () => {
+        //dot버튼의 index를 slideIndex로 할당후 showSlides함수 호출
+        slideIndex = idx;
+        showSlides();
+      })
+    })
+
+    //슬라이드 이미지 요소를 NodeList로 모두 선택
+    const slides = document.querySelectorAll(".slide");
+
+    //function showSlides(){실행코드}
+    //showSlides함수 생성
+    const showSlides = () => {
+      //모든 slide요소와 dot요소에 on클래스와 active클래스를 제거
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove("on");
+        dots[i].classList.remove("active");
+      }
+      //순번이 slideIndex인 slide요소와 dot요소에 on클래스와 active클래스를 추가
+      slides[slideIndex].classList.add("on");
+      dots[slideIndex].classList.add("active");
+    }
+
+    //자동 슬라이드 = 3초에 한번씩 반복 실행 
+    timer = setInterval(function () {
+      //console.log(slides)
+      ++slideIndex; //slideIndex번호를 1증가시킨후
+      //slideIndex값이 slides의 갯수와 같거나 커지면 slideIndex값을 0으로 초기화 하여 처음부터 다시 순환되도록 설정
+      if (slideIndex >= slides.length) {
+        slideIndex = 0;
+      }
+      //showSlides함수 호출
+      showSlides();
+    }, 3000)
+
+    const container = document.querySelector("#slider-container");
+
+    //container에 mouseover 이벤트 생성
+    container.addEventListener("mouseover", () => {
+      //setInterval종료
+      clearInterval(timer);
+    })
+    //container에 mouseout 이벤트 생성
+    container.addEventListener("mouseout", () => {
+      //다시 자동 슬라이드 설정 
+      timer = setInterval(function () {
+        ++slideIndex;
+        if (slideIndex >= slides.length) {
+          slideIndex = 0;
+        }
+        showSlides();
+      }, 3000)
+    })
+  </script>
+</body>
+
+</html>

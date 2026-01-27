@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이벤트 핸들러 내부의 this</title>
+</head>
+<body>
+  <button class="btn1">0</button>
+  <button class="btn2">0</button>
+  <script>
+    const btn1 = document.querySelector(".btn1");
+    const btn2 = document.querySelector(".btn2");
+
+    btn1.addEventListener("click", function(e){
+      //함수 내의 this는 이벤트를 바인딩한 DOM요소를 가리킨다.
+      console.log(this);
+      console.log(e.currentTarget);//이벤트가 발생된 객체
+      console.log(this === e.currentTarget); //true
+      ++this.textContent; //btn1의 텍스트값을 1증가시킴
+    });
+
+    btn2.addEventListener("click", e => {
+      //화살표 함수 내부의 this는 상위 스코프의 this를 가리킨다
+      console.log(this);// window
+      console.log(e.currentTarget); //btn2
+      console.log(this === e.currentTarget);//false
+      ++this.textContent;
+      //this는 window를 가리키므로 window.textContent에 NaN(undefined + 1)을 할당한다
+    })
+  </script>
+</body>
+</html>

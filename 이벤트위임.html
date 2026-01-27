@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이벤트위임</title>
+</head>
+<body>
+  <ul class="itemlist">
+    <li><input type="button" value="button1"></li>
+    <li><input type="button" value="button2"></li>
+  </ul>
+  <script>
+    //btns변수에 input요소들을 Nodelist로 할당
+    const btns = document.querySelectorAll("input")
+
+    //Array.forEach((배열요소,인덱스) => {실행코드})
+
+    btns.forEach((btn) => {//btns의 배열요소(input)를 순회 하면서 click이벤트를 생성
+      btn.addEventListener("click", (e) => {
+        //경고창 표시
+        alert(`${e.currentTarget.value} 클릭`)
+      })
+    })
+
+    //btn3추가
+    const itemList = document.querySelector(".itemlist");
+    //li요소 생성
+    const li = document.createElement("li");
+    //input요소 생성
+    const input = document.createElement("input");
+    //setAttribute(속성이름, 속성값), getAttribute() = 어트리뷰트를 설정 및 참조하는 메서드
+    //input요소에 type속성과 value속성을 설정
+    input.setAttribute("type", "button");
+    input.setAttribute("value", "button3");
+
+    //생성한 li요소에 input요소 추가
+    li.appendChild(input);
+    //.itemlist요소에 생성한 li요소를 추가
+    itemList.appendChild(li);
+
+    //동적으로 추가된 버튼에 클릭 이벤트를 활성화하기 위해서는 이벤트를 추가해야한다
+    input.addEventListener("click", (e) => {
+      alert(`${e.currentTarget.value} 클릭`)
+    })
+  </script>
+</body>
+</html>
