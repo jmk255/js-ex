@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이미지 목록 페이지 소개</title>
+  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+  <style>
+    body{
+      text-align: center;
+    }
+    #menu{
+      display:flex;
+      gap:30px;
+      flex-wrap:wrap;
+      width:1020px;
+      margin:auto;
+      padding:30px;
+    }
+    img{
+      width:465px;
+      /*비율 설정*/
+      aspect-ratio: 4 / 3;/*4:3비율*/
+      object-fit:cover;
+    }
+
+    h1{
+      margin:30px 0;
+      font-size:40px;
+    }
+    h2{margin-top:6px;}
+  </style>
+</head>
+<body>
+  <h1>Fruit Juice</h1>
+  <div id="menu"></div>
+  <script>
+    //변수명(객체) = {프로퍼티이름:프로퍼티값,프로퍼티이름:프로퍼티값...}
+    //객체값을 가져오기 : 객체명.프로퍼티이름 
+
+    const menu = document.querySelector("#menu");
+    //이미지를 배열에 담아 줍니다, 배열에 객체를 넣어줍니다
+    const lists = [
+      {
+        name : "딸기",
+        img : "strawberry.jpg",
+        price : 4500, 
+      },
+      {
+        name : "라임",
+        img : "lime.jpg",
+        price : 4500, 
+      },
+      {
+        name : "망고",
+        img : "mango.jpg",
+        price : 4500, 
+      },
+      {
+        name : "레몬",
+        img : "lemon.jpg",
+        price : 4500, 
+      },
+      {
+        name : "무화과",
+        img : "fig.jpg",
+        price : 4500, 
+      },
+      {
+        name : "사과",
+        img : "apple.jpg",
+        price : 4500, 
+      },
+    ];
+
+    //태그를 문자열로 작성하여 변수 content에 할당
+    //for문으로 lists의 갯수만큼 menu에 이미지를 추가
+    //for(let i=0; i<lists.length; i++)
+    for(const list of lists){
+      const content = `<div>
+        <img src="images/${list.img}" alt="${list.name}">
+        <h2>${list.name}</h2>
+        <p>${list.price}원</p>
+        </div>`
+      //content를 html요소로 가장 나중에 나오는 자식 요소의 뒤에 삽입
+      //menu.appendChild(content) <= 아래 코드와 동일
+      menu.insertAdjacentHTML("beforeend", content)
+    }
+    //menu.textContent = content; //menu에 문자열로 적용
+    
+  </script>
+</body>
+</html>

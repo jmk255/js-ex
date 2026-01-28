@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스크롤과 애니메이션 조합하기</title>
+  <style>
+    body{
+      text-align: center;
+      padding:1rem;
+    }
+    h1{margin:50vh 0;}
+    img{max-width:100%;}
+  </style>
+</head>
+<body>
+  <h1>스크롤</h1>
+  <img src="images/kirin.jpg" id="kirin" alt="기린">
+  <script>
+    /*
+      IntersectionObserver API
+      직역하면 "교차 관찰자"라는 뜻
+
+      특정요소가 지정 영역 내에 들어갔는지 탐지하는 자바스크립트의 기능 중 하나입니다.
+
+      특정요소가 지정 여역 내에 들어간 상태를 '교차하고 있다'고 표현합니다
+
+      기본 작성법
+      1. 관찰 로봇이 수행해야 하는 내용을 정해둠
+      2. 새로운 이름을 붙여 관찰 로봇 도입
+      3. 관찰 로봇에게 1. 에서 정해둔 동작 내용 지시
+      4. 관찰 로봇에게 관찰 대상을 알려주고 실행
+    */
+
+    //1. 관찰 대상이 범위 안에 나타나면 실행하는 동작
+    const showKirin = (entries, obs) => {
+      console.log(entries[0].target);//관측 중인 요소들의 상태 정보 배열
+      console.log(obs); //현재 IntersectionObserver 인스턴스(감시를 중단하거나(unobserve), 옵저버 자체를 종료(disconnect)할때 필요)
+
+      const keyframes = {
+        opacity: [0, 1],
+        translate: ["200px 0", 0],
+        fill: "forwards", //마지막 키프레임 유지
+      }
+      //관찰대상을 선택하여 애니메이션효과 적용
+      entries[0].target.animate(keyframes, 1000);
+
+      //한번 표시되었다면 관찰 중지
+      obs.unobserve(entries[0].target)
+    }
+
+    //2. 새로운 이름을 붙여 관찰 로봇 설정
+    const kirinObserver = new IntersectionObserver(showKirin); //3. 관찰 로봇에게 1.에서 정해둔 동작 내용 지시
+
+    //4. #kirin을 관찰하도록 지시
+    kirinObserver.observe(document.querySelector("#kirin"))
+  </script>
+</body>
+</html>

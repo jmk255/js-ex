@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>animation API</title>
+  <style>
+    body{
+      text-align: center;
+      padding:2rem;
+    }
+    .animation-css{
+      animation: zoom 2s linear infinite;
+    }
+    @keyframes zoom {
+      50%{scale:2;}
+    }
+    .heading{
+      background-color:skyblue;
+      padding:20px;
+    }
+  </style>
+</head>
+<body>
+  <h2 class="animation-css">CSS</h2>
+  <h2 class="animation-js">JavaScript</h2>
+  <h2 class="heading">흐물흐물</h2>
+  <script>
+    const heading = document.querySelector(".animation-js");
+
+    //animate({키프레임},{옵션})
+    heading.animate({
+      scale: [1, 2, 1]
+    },{
+      duration: 2000, //재생시간 2초
+      iterations : Infinity, //반복횟수
+      easing: 'ease', //가감속 제어
+      direction : "alternate",//재생 방향
+    })
+
+    //흐물흐물 움직이는 제목
+    const head = document.querySelector(".heading")
+
+    //키프레임과 옵션값을 객체로 지정
+    const keyframes = {
+      borderRadius: [
+        '20% 50% 50% 70%/50% 50% 70% 50%',
+        '50% 20% 50% 50%/40% 40% 60% 60%',
+        '50% 40% 20% 40%/40% 50% 50% 80%',
+        '50% 50% 50% 20%/40% 40% 60% 60%',
+      ]
+    }
+    const options = {
+      duration: 8000,
+      direction: "alternate",
+      iterations: Infinity,
+    }
+
+    //위에서 지정된 키프레임과 옵션값을 파라미터로 대입
+    head.animate(keyframes, options)
+  </script>
+</body>
+</html>

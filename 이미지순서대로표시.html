@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>여러 이미지를 순서대로 표시하기</title>
+  <style>
+    .gallery{
+      width:1020px;
+      margin:auto;
+      padding:30px;
+      display:flex;
+      gap:30px;
+      flex-wrap: wrap;
+    }
+    .img-item{
+      width:465px;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      opacity:0;
+    }
+  </style>
+</head>
+<body>
+  <h1>여러 이미지를 순서대로 표시하기</h1>
+  <div class="gallery">
+    <img class="img-item" src="images/summer1.jpg">
+    <img class="img-item" src="images/summer2.jpg">
+    <img class="img-item" src="images/summer3.jpg">
+    <img class="img-item" src="images/summer4.jpg">
+    <img class="img-item" src="images/summer5.jpg">
+    <img class="img-item" src="images/summer6.jpg">
+  </div>
+  <script>
+    //모든 이미지 요소 선택
+    const items = document.querySelectorAll(".img-item");
+
+    //for문을 활용하여 요소를 순회하면서 애니메이션 효과 적용
+    for(let i = 0; i < items.length; i++){
+      const keyframes = {
+        opacity: [0, 1],
+        filter: ["blur(20px)", "blur(0px)"]
+        // rotate: ["5deg", 0],
+        // scale: [1.1, 1]
+        //translate: ["0 50px",0]
+        //rotate: ['x 90deg', 0]
+      }
+      const options = {
+        duration: 600,
+        delay: i * 300, //0부터 순차적으로 0.3씩 증가하여 딜레이를 적용함
+        fill: "forwards", //마지막 프레임 유지
+      }
+      //이미지 요소를 순회 하면서 animate메서드를 호출
+      items[i].animate(keyframes, options)
+    }
+  </script>
+</body>
+</html>

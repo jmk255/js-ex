@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>가상요소에 애니메이션 지정</title>
+  <style>
+    .container{
+      max-width:800px;
+      margin:auto;
+      padding:2rem;
+    }
+    h1{
+      margin: 40rem 0 1rem;
+    }
+    .scroll{
+      position:relative;
+      overflow:hidden;
+      display:inline-block;
+    }
+    .scroll::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-color: #ed8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="scroll">자바스크립트란 프로그램 언어 중 하나</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima facilis error sint quas molestiae iste, saepe corrupti, hic sapiente quia impedit fugiat eum a ullam inventore tempora blanditiis aut quos!
+    Illo ipsum nostrum saepe eligendi vitae asperiores. Inventore molestias possimus labore odio fugiat deleniti fugit veritatis voluptate, perspiciatis magnam quo commodi rerum libero sapiente harum optio aut odit eius neque?
+    Dicta voluptate alias facere asperiores maiores similique omnis, voluptas unde harum velit doloribus ipsa veniam eaque ducimus corrupti minus! Saepe ea et itaque voluptatum nihil vel at reprehenderit, suscipit eum.
+    Necessitatibus quam rerum placeat maxime rem autem quod quas illo quisquam accusantium quaerat, ullam eveniet veniam? Dignissimos assumenda eius labore esse quaerat asperiores vitae, ut, quos, consequatur recusandae delectus porro.
+    Magni cum, explicabo modi tempora reiciendis quisquam quas autem magnam. Veniam, nobis eveniet. Officiis amet saepe iste, adipisci, perferendis laborum nam dicta voluptatibus perspiciatis repellat provident ullam, sapiente consequuntur. Magni.
+    Ipsa, maxime consectetur nesciunt eos officia est eum eius quam quibusdam ratione possimus, tempora adipisci harum eligendi cum assumenda perspiciatis iusto tenetur veniam unde aliquid neque facere hic sed? Dolores?
+    Maxime, beatae? Itaque eligendi consectetur quaerat exercitationem doloremque natus sequi, beatae delectus distinctio quisquam quo aut repellendus aperiam corporis accusantium veniam nulla a vitae culpa ad, atque facilis tenetur tempore!
+    Corrupti sed non impedit vitae magnam, et laborum quibusdam neque atque modi accusantium voluptas pariatur ducimus? Laborum voluptatibus saepe nisi libero, fuga voluptatum numquam ad molestias praesentium quisquam iste porro?
+    Veritatis soluta provident molestiae rem necessitatibus, eum suscipit vitae laborum impedit inventore hic quia aliquid dolore facere ducimus velit. Deserunt nobis dignissimos asperiores, aliquam beatae quam quaerat. Quas, cum debitis!
+    Aliquam, excepturi molestiae voluptatibus corrupti sunt ipsum voluptas doloremque aperiam maiores fugit exercitationem alias dolores repellat tempora error sit commodi odio ab voluptates? Tempore esse quaerat similique et, blanditiis natus.</p>
+    <h1 class="scroll">자바스크립트란 프로그램 언어 중 하나</h1>
+  </div>
+  <script>
+    //관찰 대상이 범위 안에 들어오면 실행하는 동작
+    const animateScroll = (entries, obs) => {
+      entries.forEach((entry) => {
+        if(entry.isIntersecting){//관찰대상이 관찰되면 true가 반환
+          const keyframes = {
+            translate: [0, "100%"],
+          };
+          const options = {
+            duration: 2000,
+            //옵션에서 가상요소를 선택하면 가상요소에 애니메이션이 적용됨
+            pseudoElement: "::before",
+            easing: "ease",
+            fill: "forwards"
+          }
+          entry.target.animate(keyframes, options);
+
+          //한번 표시되었다면 관찰 중지
+          obs.unobserve(entry.target)
+        }
+      })
+    }
+
+    //관찰 설정
+    const scrollObserver = new IntersectionObserver(animateScroll);//관찰 로봇에게 정해둔 동작 내용 지시
+
+    //관찰지시
+    const scrollEls = document.querySelectorAll(".scroll");
+    scrollEls.forEach((scrollEl) => {
+      //.scroll요소를 모두 순회하면서 observe()메서드를 실행
+      scrollObserver.observe(scrollEl);
+    })
+  </script>
+</body>
+</html>
