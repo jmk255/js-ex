@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>연산자</title>
+</head>
+<body>
+  <h1>0</h1>
+  <!--버튼을 클릭하면 increase함수를 호출-->
+  <button type="button" onclick="increase()">증가</button>
+  <script>
+    //h1의 문자를 불러와서 변수 n에 할당
+    let n = document.querySelector("h1").innerText;
+    console.log(n)
+    //increase함수를 생성
+    function increase(){
+      ++n;//n값을 1증가
+      //h1요소에 n값을 표시
+      document.querySelector("h1").innerText = n;
+    }
+
+    let number = 0;
+    //증가, 감소 연산자
+    console.log(number)
+    console.log(++number)
+    console.log(++number)
+    console.log(--number)
+    console.log(--number)
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>변수</title>
+</head>
+<body>
+  <script>
+    // var 변수명 = 변수값
+    var userId = 1;
+    var userName = "Lee";
+    console.log(userId, userName);//콘솔창에 출력
+    //var var = 1; 변수명으로 키워드를 사용할 수 없다
+    var score; //변수 선언
+    console.log(score); //undefined = 변수가 선언 이후 값이 할당된 적이 없다는 뜻이다.
+    
+    score = 80; //값의 할당
+    console.log(score);
+    
+    score = 90; //값의 재할당
+    console.log(score);
+
+    //변수 선언을 생략해도 된다.
+    i = 10;
+    console.log(i);
+
+    var s = "hello";
+    var s = "world";
+    console.log(s);
+    //var = let
+    //let s = "hello";
+
+    //상수 선언 const = 재할당이 불가하다
+    let s1 = "hello";
+    s1 = "안녕하세요";//재할당
+    console.log(s1)
+
+    const s2 = "hello";
+    //s2 = "안녕하세요"; //재할당이 불가하다
+
+    let result = 5 * 4;
+    console.log(result)
+  </script>
+</body>
+</html>

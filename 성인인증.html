@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>성인인증</title>
+  <style>
+    p{
+      font-size:14px;
+      color:red;
+      text-indent:20px;
+    }
+    input{
+      width:100px; height:50px;
+      font-size:40px;
+      border:1px solid #444;
+      margin:20px;
+    }
+    button{font-size:40px;}
+  </style>
+</head>
+<body>
+  <input type="text" id="myInput">
+  <!--버튼을 클릭하면 qualified함수를 호출-->
+  <button type="button" onclick="qualified()">성인인증</button>
+  <p>당신의 나이를 숫자로 입력한 후 성인인증 버튼을 클릭하세요</p>
+  <script>
+    //input요소 선택
+    const input = document.querySelector("#myInput");
+
+    function qualified(){//버튼을 클릭하면 실행
+      const num = input.value;//변수 num에 input의 정보 값을 저장(입력값)
+      //console.log(num)
+      if(num == ""){//num의 정보값이 빈 문자열일때
+        //경고창 = alert("경고창에 입력할 내용")
+        alert("아무런 정보도 입력하지 않으셨습니다")
+      }else if(num >= 19){//num의 정보값이 19와 같거나 클때
+        alert("당신은 성인입니다")
+      }else if(num < 19){//num의 정보값이 19보다 작을때
+        alert("당신은 미성년입니다")
+      } else {//모든 조건식이 거짓일 경우
+        alert("숫자만 입력해주세요")
+      }
+    }
+  </script>
+</body>
+</html>

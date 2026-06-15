@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인폼</title>
+  <style>
+    *{margin:0; padding:0; box-sizing: border-box;}
+    button{
+      background-color:transparent;
+      border:none; outline:none;
+      cursor:pointer;
+      font-size:inherit;
+    }
+
+    .popup{
+      padding:8px 34px;
+      background-color:cadetblue;
+      color:#fff;
+      margin:10px;
+    }
+    .login{
+      position:fixed;
+      inset:0;
+      background-color:rgba(0,0,0, .8);
+      display:none;/*브라우저에서 가려줍니다*/
+      /*안쪽 요소 가운데 정렬*/
+      place-items:center;
+    }
+    .login > .inner{
+      background-color:#fff;
+      width:300px;
+    }
+    .login .top{
+      height:40px;
+      display:flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right:10px;
+      border-bottom:1px solid #999;
+    }
+    .pClose{
+      font-size:30px;
+      font-weight: bold;
+      color:#666;
+    }
+    form{
+      padding:30px 40px;
+    }
+    label{
+      display:block;
+      line-height:1.6;
+      color:#333;
+      font-size:16px;
+      margin-top:10px;
+    }
+    input[type=text],
+    input[type=password]{
+      width:100%;
+      height:40px;
+      border:1px solid #999;
+      text-indent: 10px;
+    }
+    input[type=submit]{
+      width:100%;
+      height:30px;
+      margin-top:20px;
+      background-color:#333;
+      color:#fff;
+      cursor:pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="login">
+    <div class="inner">
+      <div class="top">
+        <button class="pClose">&times;</button>
+      </div>
+      <form>
+        <p>
+          <label for="user">사용자명 또는 이메일 주소</label>
+          <input type="text" id="user" name="user">
+        </p>
+        <p>
+          <label for="pw">암호</label>
+          <input type="password" id="pw" name="pw">
+        </p>
+        <input type="submit" value="로그인">
+      </form>
+    </div>
+  </div>
+
+  <section class="content">
+    <h1>로그인 입력창을 만들어 보세요</h1>
+    <button class="popup">Login</button>
+  </section>
+  <script>
+    //선택자
+    const login = document.querySelector(".login");
+    const pClose = document.querySelector(".pClose");
+    const popup = document.querySelector(".popup");
+
+    //1. popup버튼을 클릭하면 login이 브라우저에 표시
+    popup.addEventListener("click", function(){
+      login.style.display = "grid";
+    })
+    
+    //2. pClose버튼을 클릭하면 login이 브라우저에서 사라짐
+    pClose.addEventListener("click", function(){
+      login.style.display = "none";
+    })
+
+    //3. login의 배경부분을 클릭하면 login이 브라우저에서 사라짐
+    //브라우저 내에서 클릭이벤트가 발생하면 실행(이벤트객체 사용할 수 있음)
+    window.addEventListener("click", function(event){
+      console.log(event.target)//클릭한 요소를 반환
+      if(event.target == login){//클릭한 요소가 login요소면 실행
+        login.style.display = "none";//login의 display값을 none으로 변경하여 화면에서 제거
+      }
+    })
+  </script>
+</body>
+</html>

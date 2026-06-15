@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 적용</title>
+  <!--삽입된 자바스크립트 코드는 html문서의 <head>태그나 <body>태그, 또는 양쪽 모두에 위치할 수 있습니다-->
+  <!-- <script>
+    document.getElementById("date").innerHTML = Date();
+  </script> -->
+</head>
+<body>
+  <div id="date"></div>
+  <div id="string"></div>
+  <!--외부정의 js-->
+  <script src="js/example.js"></script>
+  <!--내부정의 js-->
+  <script>
+    //#date요소에 현재 날짜 정보를 표시
+    document.getElementById("date").innerHTML = Date();
+  </script>
+</body>
+</html>

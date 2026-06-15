@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>break문</title>
+</head>
+<body>
+  <script>
+    //break문 : 반복문 탈출
+    //continue : 반복문의 코드 블록 실행을 현지점에서 중단하고 반복문의 증감식으로 실행 흐름을 이동시킨다, break처럼 반복문을 탈출하지 않는다
+    let i = 0;
+    for(;;){ //무한루프
+      ++i;//i값을 1씩 증가
+      if(i % 2 == 1) continue;//i값이 홀수면 continue문을 실행
+      console.log(i) //콘솔에 i를 출력
+      if(i >= 20) break;//i가 20과 같거나 커지면 반복문을 탈출
+    }
+  </script>
+</body>
+</html>

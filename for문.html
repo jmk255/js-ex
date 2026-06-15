@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>for문</title>
+</head>
+<body>
+  <script>
+    //반복문
+    //for(초기값;조건식;증감식;){실행코드}
+
+    let s = "hello world";
+    //문자열.length = 문자의 갯수를 count해줍니다
+    // console.log(s.length)
+    for(let i = 0; i < s.length; i++){
+      //s변수에 담겨있는 문자의 순번이 i번째인 문자를 출력(순번은 0부터 카운트됩니다.)
+      console.log(s[i])
+    }
+
+    //for문을 사용하여 i값이 0부터 21이 될때까지 반복
+    for(let i = 0; i < 21; i++){
+      //html = document.documentElement
+      //body = document.body
+      //body의 innerHTML로 img요소를 삽입
+      document.body.innerHTML += "<img src='img/seq/seq"+i+".png'>";
+      //ES6 이후 문법
+      `<img src="img/seq/seq${i}.png">`
+    }
+  </script>
+</body>
+</html>
