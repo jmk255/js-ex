@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>아코디언</title>
+  <style>
+    .accordion{
+      background-color:#ddd;
+      color:#444;
+      border:none;
+      outline:none;
+      width:100%;
+      padding:18px;
+      text-align: left;
+      cursor:pointer;
+      transition: .4s;
+    }
+    .active, .accordion:hover{
+      background-color:#ccc;
+    }
+    /*Add icon*/
+    .accordion::after{
+      content:'➕';/*\02795*/
+      font-size:15px;
+      float:right;
+    }
+    .active::after{
+      content:'➖';/*\02796*/
+    }
+
+    .panel{
+      padding:0 18px;
+      background-color:white;
+      /*height값을 변경하여 패널이 펼쳐지는 애니메이션 효과를 적용하기 위한 설정*/
+      max-height:0;
+      overflow:hidden;
+      transition: max-height 0.2s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <button class="accordion">Section 1</button>
+  <div class="panel">
+    <p>Lorem ipsum1...</p>
+  </div>
+  <button class="accordion">Section 2</button>
+  <div class="panel">
+    <p>Lorem ipsum2...</p>
+  </div>
+  <button class="accordion">Section 3</button>
+  <div class="panel">
+    <p>Lorem ipsum3...</p>
+  </div>
+  <script>
+    //모든 버튼요소를 선택
+    const accs = document.querySelectorAll(".accordion");
+    console.log(accs.length)//배열 원소의 갯수를 반환
+
+    //모든 버튼요소를 순회하면서 클릭이벤트 생성
+    for(let i = 0; i < accs.length; i++){
+      accs[i].addEventListener("click", function(){
+        //클릭한 버튼에 active클래스가 있으면 제거, 없으면 추가
+        accs[i].classList.toggle("active");
+        //클릭한 버튼의 다음 형제 요소 선택
+        const panel = accs[i].nextElementSibling;
+        //panel의 maxHeight값을 구해서 값이 있으면 null로 값이 null이면 숨겨져있는 높이값으러 panel의 maxHeight값을 적용
+        if(panel.style.maxHeight){
+          panel.style.maxHeight = null;//패널이 접힘
+        }else{
+          panel.style.maxHeight = panel.scrollHeight + "px"//패널의 숨겨져있는 높이로 maxHeight값을 적용(패널이 펼쳐짐)
+        }
+      })
+    }
+  </script>
+</body>
+</html>

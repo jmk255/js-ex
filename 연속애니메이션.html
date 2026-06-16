@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>연속애니메이션</title>
+  <style>
+    div{
+      width:320px;
+      height:240px;
+      position:relative;
+      background:url(img/bg.jpg);
+    }
+    div img{
+      position:absolute;
+      display:none;
+    }
+    div img:first-child{
+      display:inline;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <script>
+    //div요소 선택
+    const parent = document.querySelector("div");
+    //이미지 추가
+    for(let i=0; i<21; i++){//0부터 20까지 반복
+      //innerHTML로 div요소의 내부에 img요소를 삽입
+      parent.innerHTML += `<img src="img/seq/seq${i}.png" alt="image${i+1}">`;
+    }
+
+    //img의 위치를 저장할 변수
+    let count = 0;
+    //setInterval함수를 호출할때 setInterval에서 id를 주는데 이때의 id값을 저장할 변수, clearInterval시 필요
+    let timer;
+
+    //parent요소에 마우스를 올리면...
+    parent.addEventListener("mouseenter", function(){
+      if(timer) clearInterval(timer) //timer변수에 setInterval함수가 있으면 claerInterval로 종료시킨 후 다시 setInterval을 설정
+      //0.05초마다 한번씩 nextFrame함수를 호출
+      timer = setInterval(nextFrame, 50);
+    })
+    //parent요소에서 마우스가 떠나면...
+    parent.addEventListener("mouseleave", function(){
+      if(timer) clearInterval(timer)
+      //0.05초마다 한번씩 prevFrame함수를 호출
+      timer = setInterval(prevFrame, 50);
+    })
+
+    //parent(div)요소의 자식(후손포함) 요소인 img요소를 모두선택
+    const imgs = parent.querySelectorAll("img");
+
+    //nextFrame함수 생성
+    function nextFrame(){
+      //현재 보이는 이미지(count)와 같은 순번요소를 선택(초기값은 0)하여 display를 none으로 화면에 안보이게 설정
+      imgs[count].style.display = "none";
+      //count의 값을 1증가시켜줍니다(다음이미지 선택)
+      count++;
+      //count값이 20(마지막 이미지)보다 커지면 20으로 고정, clearInterval로 setInterval함수를 종료 시켜줍니다
+      if(count > 20){
+        count = 20;
+        clearInterval(timer);
+      }
+
+      //증가된 count의 순번의 이미지 요소의 display값을 inline으로 변경하여 다음이미지를 화면에 표시
+      imgs[count].style.display = "inline";
+    }
+
+    //prevFrame함수 생성
+    function prevFrame(){
+      //현재 보이는 이미지(count)와 같은 순번요소를 선택(초기값은 0)하여 display를 none으로 화면에 안보이게 설정
+      imgs[count].style.display = "none";
+      //count의 값을 1감소 시켜줍니다(다음이미지 선택)
+      count--;
+      //count값이 0(첫번째 이미지)보다 작아지면 0으로 고정, clearInterval로 setInterval함수를 종료 시켜줍니다
+      if(count < 0){
+        count = 0;
+        clearInterval(timer);
+      }
+
+      //감소된 count의 순번의 이미지 요소의 display값을 inline으로 변경하여 이전이미지를 화면에 표시
+      imgs[count].style.display = "inline";
+    }
+  </script>
+</body>
+</html>

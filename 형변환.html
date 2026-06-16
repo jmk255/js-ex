@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>형변환</title>
+</head>
+<body>
+  <script>
+    //Number : 문자를 숫자로 변환(숫자로 변환할수 있는 숫자만 가능)
+    let s = "123.456f";
+    console.log(Number(s))
+    //parseInt : 문자를 정수로 변환(소수점과 숫자로 변경할수 없는 문자는 버려집니다)
+    console.log(parseInt(s))
+    //parseFloat : 문자를 실수로 변환(소수점과 숫자로 변경할수 없는 문자는 버려집니다)
+    console.log(parseFloat(s))
+
+    //반올림, 내림, 올림 메서드
+    console.log(Math.round(4.5))
+    console.log(Math.floor(4.5))
+    console.log(Math.ceil(4.1))
+
+    //난수 메소드 : Math.random() = 0~1사이의 실수를 랜덤으로 반환
+    for(let i = 0; i < 20; ++i){//20번 반복되는 코드
+      let a = Math.floor(Math.random() * 6 + 1)
+      // Math.floor(Math.random() * (MAX - MIN + 1) + MIN) : 최소 최대값 사이의 랜덤숫자를 정수로 구하는 공식
+      
+      console.log(a)
+    }
+  </script>
+</body>
+</html>

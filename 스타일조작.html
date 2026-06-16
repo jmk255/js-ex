@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스타일조작</title>
+  <style>
+    .red{color:red;}
+    .blue{color:blue;}
+  </style>
+</head>
+<body>
+  <div class="box red">Hello World</div>
+  <script>
+    //div요소 선택
+    const div = document.querySelector("div");
+    //인라인 스타일 추가
+    div.style.width = "100px";
+    div.style.height = "100px";
+    div.style.backgroundColor = "green";
+    //케밥 케이스의 css프로퍼티를 그대로 사용하려면 대괄호 표기법을 사용
+    div.style['background-color'] = "gold";
+
+    //div의 class값을 취득
+    console.log(div.className)
+
+    //div요소의 class값 중에서 red만 blue로 변경
+    div.className = div.className.replace("red", "blue")
+
+    //classList
+    console.log(div.classList)
+    
+    //클래스 교체
+    div.classList.replace("blue", "red");
+    
+    //클래스 추가
+    // div.className = "box red foo";
+    div.classList.add("foo", "baz");
+
+    //클래스 제거
+    //모든 클래스 제거 : div.className = "";
+    div.classList.remove("foo", "baz");
+
+    //인수로 전달한 index에 해당하는 클래스를 반환
+    console.log(div.classList.item(1));
+
+    //인수로 전달한 문자열과 일치하는 클래스가 있으면 true 없으면 false를 반환
+    console.log(div.classList.contains("baz"))
+
+    //인수로 전달한 문자열과 일치하는 클래스가 있으면 제거하고 없으면 추가
+    div.classList.toggle("foo")
+    div.classList.toggle("foo")
+    console.log(div.style.color)
+    
+    //getComputedStyle메서드 : css로 적용한 속성을 읽어오는 메서드
+    const divStyle = window.getComputedStyle(div)
+    console.log(divStyle.color)
+  </script>
+</body>
+</html>

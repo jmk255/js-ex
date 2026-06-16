@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문자열찍기</title>
+  <style>
+    p{font-size:30px;}
+  </style>
+</head>
+<body>
+  <p id="typing"></p>
+  <script>
+    //typing요소에 들어갈 글자
+    const x = "Heaven helps those who help themselves.";
+    console.log(x[0])
+    //글자의 순번을 담을 변수
+    let i = 0;
+    //typing요소 선택
+    const typing = document.querySelector("#typing")
+
+    //typeWriter함수 생성
+    function typeWriter(){
+      //i변수가 x변수의 글자수 보다 작은 숫자일때 코드 실행
+      if(i < x.length){ //x.length = x변수에 들어있는 글자의 갯수
+        //typing요소에 x변수에 있는 글자중 순번이 i번째인 글자를 더해서 출력
+        typing.innerHTML += x[i]
+        //i의 순번을 1증가시켜서 다음 글자가 선택되도록 합니다
+        i++;
+        //0.2초 뒤에 typeWriter함수를 다시 호출
+        //setTimeout(함수, 지연시간) : 해당 지연시간 경과후 함수를 호출
+        setTimeout(typeWriter, 200);//지연시간은 밀리세컨드단위(1000 = 1초)
+      }else{ //i값이 x의 글자수 보다 커지면 코드 실행
+        i = 0;//i를 0으로 초기화
+        //1초뒤에 recall함수를 호출
+        setTimeout(recall, 1000);
+      }
+    }
+
+    //recall함수 생성
+    function recall(){
+      //typing요소의 글자요소를 비워줍니다
+      typing.innerHTML = "";
+      //다시 typeWriter함수를 호출
+      typeWriter(); 
+    }
+
+    typeWriter(); //typeWriter함수 호출
+  </script>
+</body>
+</html>
