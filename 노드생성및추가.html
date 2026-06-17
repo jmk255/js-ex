@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>노드생성 및 추가</title>
+</head>
+<body>
+  <ul id="fruits">
+    <li>Apple</li>
+  </ul>
+
+  <script>
+    //appendChild()메서드 = 한 노드를 특정 부모 노드의 자식 노드 리스트 중 마지막 자식으로 붙입니다
+
+    //ul요소를 선택
+    const fruits = document.querySelector("#fruits");
+    //요소 노드 생성
+    const li = document.createElement('li');
+    //텍스트 노드 생성
+    const textNode = document.createTextNode('Banana');
+    //텍스트노드를 li요소 노드의 자식 노드로 추가
+    li.appendChild(textNode);
+    //li요소를 fruits요소 노드의 마지막 자식 노드로 추가
+    fruits.appendChild(li);
+
+    const firstEl = document.querySelector("ul > li:first-child");
+    console.log(firstEl)
+    fruits.appendChild(firstEl)
+
+    //insertBefore()메서드 : 새로운 노드를 특정 자식노드 바로 앞에 추가합니다
+    //부모노드.insertBefore(새로운 자식노드, 기준자식노드)
+    const li2 = document.createElement("li");
+    li2.appendChild(document.createTextNode("pineapple"))
+    fruits.insertBefore(li2, firstEl)
+  </script>
+
+  <!--beforebegin-->
+  <div id="foo" style="border:1px solid red;">
+    <!--afterbegin-->
+    text
+    <!--beforeend-->
+  </div>
+  <!--afterend-->
+  <script>
+    const foo = document.querySelector("#foo")
+    foo.insertAdjacentHTML("beforebegin", "<p>beforebegin</p>")
+    foo.insertAdjacentHTML("afterbegin", "<p>afterbegin</p>")
+    foo.insertAdjacentHTML("beforeend", "<p>beforeend</p>")
+    foo.insertAdjacentHTML("afterend", "<p>afterend</p>")
+    //배열 구조 분해 할당 : 배열을 분해해서 각각의 변수에 할당합니다
+    const [banana, pineapple, apple] = fruits.children;
+    console.log(banana, pineapple, apple)
+    //이미 존재하는 banana요소 노드를 fruits요소 노드의 마지막 노드로 이동
+    fruits.appendChild(banana)
+
+    </script>
+
+  <hr>
+  <h2 id="item">REACT</h2>
+  <div id="list">
+    <p>HTML</p>
+    <p>CSS</p>
+    <p>JAVASCRIPT</p>
+  </div>
+  <script>
+    //cloneNode()메서드 : 기존의 존재하는 노드와 똑같은 새로운 노드를 생성하여 반환
+    //복제할노드.cloneNode(자식 노드 복제 여부(true, false))
+    const list = document.querySelector("#list");
+    const originItem = document.querySelector("#item");
+    //해당 노드를 복제하여 리스트의 맨 마지막에 추가함
+    list.appendChild(originItem.cloneNode(true));
+  </script>
+  <hr>
+  <h1>요소 노드의 교체</h1>
+  <div id="parent" style="border:1px solid red;">
+    <p id="first">첫 번째 요소입니다</p>
+    <p id="second">두 번째 요소입니다</p>
+  </div>
+  <p id="third">세 번째 요소입니다.</p>
+  <button id="btn">요소 노드 교체!</button>
+  <script>
+    //replaceChild()메서드 : 기존의 요소 노드를 새로운 요소 노드로 교체
+    //부모노드.replaceChild(새로운자식노드, 기존자식노드)
+
+    //선택자
+    const parent = document.querySelector("#parent");
+    const first = document.querySelector("#first");
+    const third = document.querySelector("#third");
+    const btn = document.querySelector("#btn");
+
+    btn.addEventListener("click", () => {
+      //first요소를 삭제하고, 그대신 third요소를 삽입
+      parent.replaceChild(third, first)
+    })
+
+    //removeChild() 메서드 : 자식 노드 리스트에서 특정 자식 노드를 제거
+    const second = document.querySelector("#second");
+    parent.removeChild(second);//지정된 요소를 삭제
+  </script>
+</body>
+</html>

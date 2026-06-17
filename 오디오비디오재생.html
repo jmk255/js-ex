@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오디오 및 비디오 재생</title>
+  <style>
+    .video-container{
+      width:100%;
+      height:0;
+      position:relative;
+      padding-bottom:56.25%;/*16:9*/
+    }
+    .video-container iframe{
+      width:100%; height:100%;
+      position:absolute;
+      top:0; left:0;
+    }
+  </style>
+</head>
+<body>
+  <audio id="myAudio"></audio>
+  <button class="aBtn" type="button">시작(play)</button>
+  <button class="bBtn" type="button">멈춤(pause)</button>
+
+  <hr>
+
+  <audio controls>
+    <source src="img/happybirthday.mp3" type="audio/mpeg">
+    <source src="img/happybirthday.ogg" type="audio/ogg">
+  </audio>
+
+  <br>
+
+  <!--비디오 재생-->
+  <video id="myVideo" width="240" height="320" controls>
+    <source src="img/video.mp4" type="video/mp4">
+  </video>
+  <br>
+  <button class="vBtn" type="button">시작(play)</button>
+  <button class="vBtn" type="button">멈춤(pause)</button>
+
+  <!--유튜브 영상 링크-->
+  <div class="video-container">
+    <!--유튜브 영상은 "공유 > 퍼가기"로 링크 주소를 가져오면됨-->
+    <iframe src="https://www.youtube.com/embed/_5BaXPdKI4w?si=uk-O6kClnI9pVEb4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+  <script>
+    //오디오 재생
+    const audio = document.querySelector("#myAudio");
+    const aBtn = document.querySelector(".aBtn");//play버튼
+    const bBtn = document.querySelector(".bBtn");//pause버튼
+
+    //play버튼에 클릭이벤트 생성
+    aBtn.addEventListener("click", () => {
+      //audio의 src속성값 적용
+      audio.src = "img/happybirthday.mp3";
+      //audio를 실행
+      audio.play();
+    })
+
+    //pause버튼에 클릭 이벤트 생성
+    bBtn.addEventListener("click", () => {
+      //audio 재생을 멈춤
+      audio.pause();
+    })
+
+    //비디오 재생
+    const video = document.querySelector("#myVideo");
+    const vBtns = document.querySelectorAll(".vBtn");
+
+    video.poster = "img/strawberry.jpg";
+    //play버튼을 클릭하면 영상이 재생
+    vBtns[0].addEventListener("click", () => {
+      video.currentTime = 0;/*처음 프레임부터 다시 영상을 시작해라*/
+      video.play();
+    })
+    //pause버튼을 클릭하면 영상이 멈춤
+    vBtns[1].addEventListener("click", () => {
+      video.pause();
+    })
+  </script>
+</body>
+</html>

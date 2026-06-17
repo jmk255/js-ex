@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스크롤</title>
+  <style>
+    *{margin:0; padding:0;}
+    section{overflow:hidden;}
+    article{
+      position:relative;
+      width:100%;
+      height:900px;
+    }
+    .art1{background-color:red;}
+    .art1 h1{
+      font-size:200px;
+      text-align: center;
+      position:absolute;
+      width:100%;
+      top:50%; 
+      transform:translateY(-50%);
+      color:#fff;
+      opacity:0;
+      transition: .5s;
+    }
+    /*art1요소에 on클래스가 추가되면 h1요소가 서서히 나타남*/
+    .art1.on h1{opacity:1;}
+
+    .art2{background-color:green;}
+    .left1{
+      font-size:60px;
+      color:#fff;
+      text-align: center;
+      position:absolute;
+      left:-500px;
+      top:20%;
+      font-weight: bold;
+      transition: .3s;
+    }
+    /*on클래스가 추가되면 left값을 200px로 설정하여 브라우저 안쪽으로 나타나게 함*/
+    .left1.on{left:200px;}
+    .right1{
+      font-size:60px;
+      color:#fff;
+      text-align: center;
+      position:absolute;
+      right:-500px;
+      bottom:20%;
+      font-weight: bold;
+      transition: .3s;
+    }
+    .right1.on{right:200px;}/*오른쪽 밖에서 나타남*/
+
+    .art3{background-color:blue;}
+    .art4{background-color:orange;}
+    .art5{background-color:brown;}
+  </style>
+</head>
+<body>
+  <section>
+    <article class="art1">
+      <h1>Lorem!</h1>
+    </article>
+    <article class="art2">
+      <div class="left left1">Ipsum</div>
+      <div class="right right1">Dolor!</div>
+    </article>
+    <article class="art3"></article>
+    <article class="art4"></article>
+    <article class="art5"></article>
+  </section>
+  <script>
+    //window객체는 생략이 가능하다
+    //스크롤이벤트 생성
+    window.addEventListener("scroll", () => {
+      //window.scrollY = 스크롤 이동값을 반환
+      console.log(window.scrollY)
+      if(scrollY >= 100){//스크롤 이동값이 100이상일때 실행
+        //.art1에 on클래스를 추가
+        document.querySelector(".art1").classList.add("on")
+      }
+      if(scrollY >= 500){
+        document.querySelector(".left1").classList.add("on")
+      }
+      if(scrollY >= 1000){
+        document.querySelector(".right1").classList.add("on")
+      }
+    })
+  </script>
+</body>
+</html>

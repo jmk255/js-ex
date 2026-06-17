@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로딩아이콘</title>
+  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+  <style>
+    /*로딩이미지*/
+    #loading{
+      position:fixed;
+      background-color:#ddd;
+      inset:0;
+      z-index: 9999;/*다른요소에 가려지지 않도록 z-index값을 큰값으로 설정*/
+      display:grid;
+      place-items:center;/*이미지요소를 가운데 정렬하기 위한 속성*/
+      transition: 1s;
+    }
+    #loading > .spinner{
+      width:200px; height:200px;
+    }
+
+    /*로딩을 완료하면 로딩 이미지를 감추기*/
+    .loaded{
+      opacity:0;
+      visibility:hidden;
+    }
+
+    /*컨텐츠부분*/
+    .gallery{
+      display:grid;
+      gap:10px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-auto-rows:300px;
+      padding:10px;
+    }
+    .gallery img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+  </style>
+</head>
+<body>
+  <!--로딩이미지-->
+  <div id="loading">
+    <img class="spinner" src="img/loading.png" alt="">
+  </div>  
+  <!--컨텐츠-->
+  <div class="gallery">
+    <div class="item"><img src="img/p1.jpg"></div>
+    <div class="item"><img src="img/p2.jpg"></div>
+    <div class="item"><img src="img/p3.jpg"></div>
+    <div class="item"><img src="img/p4.jpg"></div>
+    <div class="item"><img src="img/p5.jpg"></div>
+    <div class="item"><img src="img/p6.jpg"></div>
+    <div class="item"><img src="img/p7.jpg"></div>
+    <div class="item"><img src="img/p8.jpg"></div>
+    <div class="item"><img src="img/p9.jpg"></div>
+    <div class="item"><img src="img/p10.jpg"></div>
+    <div class="item"><img src="img/p11.jpg"></div>
+    <div class="item"><img src="img/p12.jpg"></div>
+  </div>
+  <script>
+    const loading = document.querySelector("#loading");
+    //모든 리소스 불러오기가 완료되면 #loading에 loaded클래스를 추가하여 로딩아이콘 감추기
+    window.addEventListener("load", () => {
+      loading.classList.add("loaded");
+    })
+  </script>
+</body>
+</html>

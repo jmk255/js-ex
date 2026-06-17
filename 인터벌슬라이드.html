@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>인터벌슬라이드</title>
+  <style>
+    .bigBox{
+      border:2px solid red;
+      width:400px;
+      height:300px;
+      margin:100px auto;
+      overflow:hidden;
+    }
+    .box{
+      position:relative;
+      width:1200px;
+      height:300px;
+    }
+    .box img{
+      position:absolute;
+      transition: .3s;
+    }
+    .box .left0{left:0;}
+    .box .leftPlus400{
+      left:400px;
+      transition:none;
+    }
+    .box .leftMinus400{
+      left:-400px;
+    }
+  </style>
+</head>
+<body>
+  <div class="bigBox">
+    <div class="box">
+      <img class="left0" src="img/img1.jpg" alt="이미지1">
+      <img class="leftPlus400" src="img/img2.jpg" alt="이미지2">
+      <img class="leftPlus400" src="img/img3.jpg" alt="이미지3">
+      <img class="leftPlus400" src="img/img4.jpg" alt="이미지4">
+    </div>
+  </div>
+  <script>
+    let i = 0; //이미지의 순번을 담을 변수
+    //선택자
+    const boxImgs = document.querySelectorAll(".box > img");
+
+    const slide = () => {//slide함수 생성
+      //i가 boxImgs의 갯수와 같으면 i값을 0으로 초기화
+      if(i === boxImgs.length) i = 0
+
+      //현재보이는 이미지의 class를 leftMinus400으로 변경하여 왼쪽 밖으로 이동하게 설정
+      boxImgs[i].className = "leftMinus400";
+      //다음 이미지요소의 클래스를 left0으로 변경하여 오른쪽밖에서 왼쪽으로 이동하게 설정
+      boxImgs[(i+1) % boxImgs.length].className = "left0";
+      boxImgs[(i+2) % boxImgs.length].className = "leftPlus400";
+
+      i++;//i값을 1증가
+    }
+    //3초에 한번씩 slide함수를 반복호출
+    setInterval(slide, 3000);
+  </script>
+</body>
+</html>

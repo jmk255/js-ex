@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Swiper demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+
+  <!-- Demo styles -->
+  <style>
+    html,
+    body {
+      position: relative;
+      height: 100%;
+    }
+
+    body {
+      background: #fff;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .swiper {
+      width: 400px;
+      height: 300px;
+    }
+    .mySwiper2{
+      width:500px;
+      height:300px;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #444;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .swiper-button-next,
+    .swiper-button-prev{
+      color:black;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Swiper -->
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="img/p1.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/p2.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/p3.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/p4.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/p5.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/p6.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/p7.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/p8.jpg" alt="">
+      </div>
+    </div>
+    <!--좌우버튼-->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <!--페이징 버튼-->
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <!-- Swiper2 -->
+  <div class="swiper mySwiper2">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="img/p1.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/p2.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/p3.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/p4.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/p5.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/p6.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/p7.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/p8.jpg" alt="">
+      </div>
+    </div>
+    <!--좌우버튼-->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <!--페이징 버튼-->
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      loop:true, //무한 루프 모드를 활성화
+      //활살표 버튼 표시
+      navigation: {
+        nextEl: ".swiper-button-next",//다음 슬라이드로 이동하는 버튼 선택자
+        prevEl: ".swiper-button-prev"//이전 슬라이드로 이동하는 버튼 선택자
+      },
+      //페이징 버튼
+      pagination: {
+        el: ".swiper-pagination", //페이지네이션을 나타낼 요소 선택자
+        clickable: true, //버튼에 클릭이벤트를 적용
+      },
+    })
+    
+    var swiper2 = new Swiper(".mySwiper2", {
+      loop:true, //무한 루프 모드를 활성화
+      //활살표 버튼 표시
+      navigation: {
+        nextEl: ".swiper-button-next",//다음 슬라이드로 이동하는 버튼 선택자
+        prevEl: ".swiper-button-prev"//이전 슬라이드로 이동하는 버튼 선택자
+      },
+      //페이징 버튼
+      pagination: {
+        el: ".swiper-pagination", //페이지네이션을 나타낼 요소 선택자
+        clickable: true, //버튼에 클릭이벤트를 적용
+        type: "fraction"
+      },
+    })
+  </script>
+</body>
+
+</html>
