@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>다운메뉴</title>
+  <style>
+    *{margin:0; padding:0; box-sizing: border-box;}
+    ul, li{list-style: none;}
+    a{text-decoration: none; color:#333;}
+
+    nav{
+      width:1000px;
+      height:150px;
+      margin:auto;
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+      padding:0 10px;
+    }
+    .gnb{
+      display:flex;
+    }
+    .gnb li{
+      width:200px;
+      height:40px;
+      position:relative;
+    }
+    .gnb li a{
+      display:block;
+      width:100%; height:100%;
+      background-color:rgba(255,255,255,0.7);
+      text-align: center;
+      line-height:40px;
+    }
+    /*주메뉴의 스타일변경과 하이라이트 효과 적용*/
+    .gnb > li > a{
+      font-weight: bold;
+      transition: .5s;
+    }
+    .gnb > li:hover > a{
+      background-color:green;
+      color:#fff;
+    }
+    /*서브메뉴*/
+    .sub{/*서브메뉴를 position으로 띄워서 다른 요소에 가려지지 않게 설정*/
+      position:absolute;
+      /*서브메뉴가 보이지 않도록 설정*/
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .5s;
+    }
+    .sub li a{
+      transition:.5s;
+    }
+    .sub li:hover a{
+      background-color:darkgreen;
+      color:#fff;
+    }
+
+
+    .slide{
+      width:1000px;
+      margin:auto;
+    }
+    .slide img{
+      width:100%;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <h1 class="logo">
+      <img src="img/logo.png" alt="logo" width="220">
+    </h1>
+    <ul class="gnb">
+      <li>
+        <a href="#">MainMenu1</a>
+        <ul class="sub">
+          <li><a href="#">SubMenu1</a></li>
+          <li><a href="#">SubMenu2</a></li>
+          <li><a href="#">SubMenu3</a></li>
+          <li><a href="#">SubMenu4</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">MainMenu2</a>
+        <ul class="sub">
+          <li><a href="#">SubMenu1</a></li>
+          <li><a href="#">SubMenu2</a></li>
+          <li><a href="#">SubMenu3</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">MainMenu3</a>
+        <ul class="sub">
+          <li><a href="#">SubMenu1</a></li>
+          <li><a href="#">SubMenu2</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <section>
+    <article class="slide">
+      <img src="img/images.jpg" alt="">
+    </article>
+  </section>
+
+  <script>
+    //메뉴 선택
+    const gnbLi = document.querySelectorAll(".gnb > li");
+    //반복함수로 li요소를 순회하면서 이벤트 발생
+    gnbLi.forEach(item => {
+      //li(item)요소에 mouseenter이벤트 생성(서브메뉴가 펼쳐지는 효과)
+      item.addEventListener("mouseenter", () => {
+        //li요소의 자식요소인 .sub를 선택하여 maxHeight값을 서브메뉴의 높이(scrollHeight)로 설정하여 펼쳐줍니다
+        item.lastElementChild.style.maxHeight = item.lastElementChild.scrollHeight + "px";
+      })
+      //li요소에 mouseleave이벤트 생성(서브메뉴가 접혀지는 효과)
+      item.addEventListener("mouseleave", () => {
+        item.lastElementChild.style.maxHeight = "0px";
+      })
+    })
+  </script>
+</body>
+</html>

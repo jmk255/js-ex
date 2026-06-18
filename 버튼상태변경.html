@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>버튼상태변경</title>
+  <style>
+    body{
+      text-align: center;
+      padding:2rem;
+    }
+    label{
+      display:block;
+      margin-bottom:1rem;
+    }
+    #btn{
+      background-color:#0bd;
+      padding: .75rem 1rem;
+      border-radius: 8px;
+    }
+    input[type=checkbox]{
+      width:20px; height:20px;
+      vertical-align: middle;
+      transform: translateY(-3px);
+    }
+
+    /*비활성화된 버튼의 스타일*/
+    #btn:disabled{
+      background:#ccc;
+    }
+  </style>
+</head>
+<body>
+  <label>
+    <input id="check" type="checkbox"> 이용 약관에 동의
+  </label>
+  <!--disabled = 버튼 비활성화-->
+  <input id="btn" type="submit" value="전송" disabled>
+  <script>
+    //선택자
+    const isAgreed = document.querySelector("#check");
+    const btn = document.querySelector("#btn")
+
+    //체크박스에 change이벤트 발생시
+    isAgreed.addEventListener("change", () => {
+      // console.log(btn.disabled); //버튼에 disabled속성이 있으면 true, 없으면 false
+      // //체크박스를 체크하면
+      // if(isAgreed.checked === true){
+      //   //버튼을 활성화 시켜줍니다.
+      //   btn.disabled = false;
+      // }else{//그렇지 않으면(체크박스가 해제되면)
+      //   //버튼을 비활성화 시켜줍니다
+      //   btn.disabled = true;
+      // }
+
+      //'!'는 반대를 뜻하는 기호
+      btn.disabled = !isAgreed.checked;
+      //결과적으로 체크박스가 해제되면 버튼에 disabled속성 적용, 체크하면 disabled속성 해제
+    })
+
+  </script>
+</body>
+</html>

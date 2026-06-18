@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>시계</title>
+  <style>
+    .frame{
+      display:inline-block;
+      background-color:black;
+      padding:8px;
+      border-radius: 8px;
+    }
+    .clock{
+      color:#fff;
+      font-family: "Roboto", sans-serif;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    .large_text{font-size:75px;}
+    .small_text{font-size:20px;}
+    .date_box{
+      font-size:15px;
+    }
+    .colon{
+      font-size:55px;
+      vertical-align: text-bottom;
+      /*animation속성값으로 step-start를 설정하면 1초에 한번씩 깜빡이는 애니메이션효과를 만들수 있음*/
+      animation: blink 1s step-start infinite;
+    }
+    @keyframes blink {
+      50%{opacity: 0;}
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <div class="clock">
+      <div class="time_box">
+        <span id="hours" class="large_text"></span>
+        <span class="colon">:</span>
+        <span id="minutes" class="large_text"></span>
+        <span id="seconds" class="small_text"></span>
+      </div>
+      <div class="date_box">
+        <span id="year"></span>
+        <span>.</span>
+        <span id="month"></span>
+        <span>.</span>
+        <span id="date"></span>
+        <span id="day"></span>
+      </div>
+    </div>
+  </div>
+  <script>
+    //watchClock함수 생성
+    const watchClock = () => {
+      //숫자가 한자리일때 앞에 0을 붙이는 함수
+      const leftPad = (number) => {//매개변수로 number를 전달받음
+        //전달받은 number가 10보다 작으면 앞에 0을 붙여서 반환
+        if(number < 10){
+          return `0${number}`;
+        }
+        //number가 10 이상이면 값 그대로 반환
+        return number;
+      }
+      //오늘의 요일 정보를 글자로 변경하는 함수
+      const getDayText = (index) => {//현재 요일에 해당하는 숫자값을 index로 전달받음
+        const days = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+        //전달받은 index의 순번에 해당하는 배열요소를 반환
+        return days[index];
+      }
+
+      //현재 날짜 정보를 present변수 저장
+      const present = new Date();
+      //현재 시, 분, 초정보를 각각 변수에 할당
+      const hour = leftPad(present.getHours());
+      const min = leftPad(present.getMinutes());
+      const sec = leftPad(present.getSeconds());
+      //console.log(hour, min, sec)
+      //현재 연도를 year에 저장
+      const year = present.getFullYear();
+      //현재 달을 month에 저장(한자리 숫자일때 앞에 0을 붙여줌)
+      const month = leftPad(present.getMonth()+1);
+      //현재 날짜를 date에 저장
+      const date = leftPad(present.getDate());
+      //현재 요일을 day에 저장
+      const day = getDayText(present.getDay());
+
+      //뽑아낸 시간정보를 각각의 요소에 텍스트로 적용
+      document.querySelector("#hours").textContent = hour
+      document.querySelector("#minutes").textContent = min
+      document.querySelector("#seconds").textContent = sec
+
+      document.querySelector("#year").textContent = year
+      document.querySelector("#month").textContent = month
+      document.querySelector("#date").textContent = date
+      document.querySelector("#day").textContent = day
+    }
+
+    setInterval(watchClock, 1000)//1초에 한번씩 watchClock함수를 반복 호출
+  </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tabs</title>
+  <style>
+    *{margin:0; padding:0; box-sizing: border-box;}
+    ul, li{list-style: none;}
+    a{text-decoration: none; color:inherit;}
+
+    .tab_wrap{
+      width:800px;
+      margin:50px auto;
+    }
+
+    .tab_wrap .tab_menu{
+      display:flex;
+      gap:2px;
+    }
+    .tab_wrap .tab_menu li{
+      width:20%;
+      text-align: center;
+    }
+    .tab_wrap .tab_menu li a{
+      display:block;
+      padding:10px 0;
+      background-color:#aa7575;
+      color:#fff;
+    }
+    .tab_wrap .tab_menu li a.active{
+      background-color:#df2e2e;
+      color:#f3e40c;
+    }
+    #tab_content{
+      border:1px solid #ddd;
+      padding:20px;
+      height:160px;
+    }
+    #tab_content > div{
+      display:none;
+    }
+    #tab_content > div:first-child{
+      display:block;
+    }
+    #tab_content > div h2{margin-bottom:10px;}
+    #tab_content > div p{color:#05149e;}
+  </style>
+</head>
+<body>
+  <div class="tab_wrap">
+    <ul class="tab_menu">
+      <li><a href="#tab1" class="active">menu 1</a></li>
+      <li><a href="#tab2">menu 2</a></li>
+      <li><a href="#tab3">menu 3</a></li>
+    </ul>
+    <div id="tab_content">
+      <div id="tab1">
+        <h2>menu1</h2>
+        <p>01. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus molestias veritatis atque. Nobis iure incidunt asperiores, cumque est reprehenderit amet voluptatibus praesentium, vel aperiam corrupti facilis, molestiae quis tempore dignissimos.</p>
+      </div>
+      <div id="tab2">
+        <h2>menu2</h2>
+        <p>02. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, ullam iure! Officia reiciendis provident nam deleniti tenetur, reprehenderit rerum aliquid corrupti perspiciatis eveniet voluptate deserunt fugit officiis quam harum illo!</p>
+      </div>
+      <div id="tab3">
+        <h2>menu3</h2>
+        <p>03. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur blanditiis quam doloribus vero, aliquam sequi aut earum minima, tenetur laborum aspernatur eaque ad modi ut, voluptatibus eveniet amet magnam porro?</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    //선택자
+    const targetLink = document.querySelectorAll(".tab_menu a");
+    const tabContent = document.querySelectorAll("#tab_content > div");
+
+    //반복함수 : 배열.forEach((배열요소, 순번, 원본배열) => {실행코드})
+    targetLink.forEach((link, idx) => {
+      //모든 a요소에 클릭이벤트 생성
+      link.addEventListener("click", (e) => {
+        //기본 링크 기능을 제거
+        e.preventDefault();
+
+        //클릭한 a요소의 href속성값을 선택자로 같은 순번의 content를 선택
+        const orgTarget = e.target.getAttribute("href");
+        //getAttribute(속성이름) : 속성값을 읽어오는 메서드
+        //setAttribute(속성이름, 값) : 해당속성값을 설정하는 메서드
+        //console.log(orgTarget)
+        
+        
+        //모든 a요소에 active를 제거하고, 클릭한 a요소에 active클래스를 추가하여 활성화
+        
+        // targetLink.forEach(el => {
+        //   el.classList.remove("active")
+        // });
+        // link.classList.add("active")
+        targetLink.forEach(el => el.classList.toggle("active", el === link));
+
+        //모든 content요소의 display를 none으로 변경 후
+        tabContent.forEach(tab => {
+          tab.style.display = "none"
+        })
+
+        //orgTarget을 선택자로 클릭한 a요소와 같은 순번의 content요소를 선택하여 display속성을 block으로 변경
+        document.querySelector(orgTarget).style.display = "block";
+      })
+    })
+  </script>
+</body>
+</html>

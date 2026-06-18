@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date객체</title>
+</head>
+<body>
+  <script>
+    //Date 객체 생성
+    let today = new Date();
+    console.log(today)
+
+    const weekday = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+    //Date객체의 다양한 메서드를 이용하여 현재 시각 및 날짜 정보를 가져옵니다.
+    console.log("연도 " + today.getFullYear())
+    console.log("월 " + (today.getMonth()+1))
+    console.log("일 " + today.getDate())
+    console.log("요일 " + weekday[today.getDay()])
+    console.log("시 " + today.getHours())
+    console.log("분 " + today.getMinutes())
+    console.log("초 " + today.getSeconds())
+  </script>
+</body>
+</html>
