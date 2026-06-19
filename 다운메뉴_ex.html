@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>다운메뉴</title>
+  <style>
+    *{margin:0; padding:0;}
+    ul, li{list-style:none;}
+    a{color:inherit; text-decoration: none;}
+
+    .gnb{
+      margin:auto;
+      width:1180px;
+      padding:0 10px;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .gnb > li{
+      width:200px;
+      background-color:gray;
+      text-align: center;
+      position:relative;/*pos:abs를 적용한 자식요소의 기준이됨*/
+    }
+    .gnb > li a{
+      line-height:40px;
+      display:block;
+      width:100%;
+      color:#fff;
+    }
+    .submenu{
+      background-color:gray;
+      position:absolute;
+      width:100%;
+    }
+    .gnb > li:hover > a{/*주메뉴에 하이라이트 효과*/
+      background-color:steelblue;
+      color:cornsilk;
+    }
+    .submenu a:hover{/*서브메뉴에 하이라이트 효과*/
+      background-color:bisque;
+      color:tomato;
+    }
+    .submenu{/*서브메뉴를 화면에서 제거*/
+      display:none;
+    }
+    .gnb > li:hover > .submenu{
+      display:block;
+    }
+  </style>  
+</head>
+<body>
+  <ul class="gnb">
+    <li>
+      <a href="#">1차 메뉴 아이템</a>
+      <ul class="submenu">
+        <li><a href="#">2차 메뉴 아이템</a></li>
+        <li><a href="#">2차 메뉴 아이템</a></li>
+        <li><a href="#">2차 메뉴 아이템</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">1차 메뉴 아이템</a>
+      <ul class="submenu">
+        <li><a href="#">2차 메뉴 아이템</a></li>
+        <li><a href="#">2차 메뉴 아이템</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">1차 메뉴 아이템</a>
+      <ul class="submenu">
+        <li><a href="#">2차 메뉴 아이템</a></li>
+        <li><a href="#">2차 메뉴 아이템</a></li>
+        <li><a href="#">2차 메뉴 아이템</a></li>
+        <li><a href="#">2차 메뉴 아이템</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">1차 메뉴 아이템</a>
+      <ul class="submenu">
+        <li><a href="#">2차 메뉴 아이템</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <section class="content" style="width:100%; height:500px; background-color:orange;"></section>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이벤트객체</title>
+  <style>
+    .k1{
+      position:fixed;
+      width:100px;
+      height:100px;
+    }
+  </style>
+</head>
+<body>
+  <p>클릭하세요. 클릭한 곳의 좌표가 표시됩니다</p>
+  <em class="msg"></em>
+  <img class="k1" src="img/1.png" alt="키티">
+  <script>
+    //window객체에 클릭이벤트 생성, 이때 이벤트객체를 인자로 전달받음
+    addEventListener("click", (e) => {
+      console.log(e)
+      //클릭 이벤트에 의해 생성된 이벤트 객체는 이벤트 핸들러의 첫번째 인수로 전달된다
+      document.querySelector(".msg").textContent = `clientX: ${e.clientX}, clientY: ${e.clientY}`
+
+      //clientX,Y = document에서 스크롤 이동값을 제외한 마우스의 x,y좌표값
+
+      //pageX,Y = document에서 스크롤 이동값을 포함한 마우스의 x,y좌표값
+
+      //offsetX,Y = 이벤트 발생시 이벤트의 대상으로 부터 마우스의 x,y좌표값
+
+      //screenX,Y = 모니터화면 기준으로 마우스의 x,y좌표값
+    })
+
+    //브라우저내에서 마우스가 움직이면 구문 실행
+    addEventListener("mousemove",(e) => {
+      //x축 좌표와 y축 좌표 구하기
+      let x = e.clientX, y = e.clientY;
+      console.log(x, y)
+      //키티이미지의 top속성값과 left속성값을 마우스의 좌표값으로 적용하여 마우스를 따라다니게 만들어 줍니다.
+      const kity = document.querySelector(".k1")
+      kity.style.top = y-50 + "px";
+      kity.style.left = x-50 + "px";
+    })
+  </script>
+</body>
+</html>
