@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>타겟그리기</title>
+  <style>
+    *{
+      margin:0; 
+      padding:0;
+      cursor:url(img/mouse_img_32.png), auto;
+    }
+    ul,li{list-style:none;}
+    a{
+      text-decoration: none; 
+      color:black; 
+      font-size:20px;
+    }
+    a:hover{color:red;}
+    #mouse_col{
+      position:fixed;
+      width:100%;
+      height:2px;
+      left:0; top:0;
+      background-color:orangered;
+      /*해당 속성이 적용된 요소는 마우스가 인식하지 않는다*/
+      pointer-events:none;
+    }
+    #mouse_row{
+      position:fixed;
+      width:2px;
+      height:100%;
+      left:0; top:0;
+      background-color:orangered;
+      pointer-events:none;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li><a href="#">main</a></li>
+    <li><a href="#">about</a></li>
+    <li><a href="#">skill</a></li>
+    <li><a href="#">work</a></li>
+    <li><a href="#">contact</a></li>
+  </ul>
+  <div id="mouse_col"></div>
+  <div id="mouse_row"></div>
+  <script>
+    //마우스무브 이벤트 생성, 이때 마우스의 위치값을 구하기 위해 이벤트 객체를 인자로 전달
+    window.addEventListener("mousemove", (e) => {
+      //마우스의 위치값을 저장
+      const x = e.clientX;
+      const y = e.clientY;
+      const m_col = document.querySelector("#mouse_col");
+      const m_row = document.querySelector("#mouse_row");
+      //m_col의 top위치값을 마우스의 y축 위치값으로 대입
+      m_col.style.top = y + "px";
+      //m_row의 left위치값을 마우스의 x축 위치값으로 대입
+      m_row.style.left = x + "px";
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마우스를 따라다니는 수리검</title>
+  <style>
+    *{
+      margin:0; padding:0;
+      cursor:none;
+    }
+    body{overflow: hidden;}
+    ul{
+      list-style: none;
+      padding:20px 0;
+      display:flex;
+      gap:80px;
+      justify-content: center;
+    }
+    ul a{
+      font-size:20px;
+      text-decoration: none;
+      color:black;
+    }
+    ul a:hover{
+      color:tomato;
+    }
+    #cursor{
+      position:fixed;
+      z-index: 9999;
+      pointer-events:none;
+    }
+    #cursor img{
+      display:block;
+      width:50px; height:50px;
+      transition: .3s;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="cursor">
+    <img src="img/shuriken.png" alt="수리검" width="50">
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#">main</a></li>
+      <li><a href="#">about</a></li>
+      <li><a href="#">skill</a></li>
+      <li><a href="#">work</a></li>
+      <li><a href="#">contact</a></li>
+    </ul>
+  </nav>
+  <script>
+    //선택자
+    const cursor = document.querySelector("#cursor");
+    const links = document.querySelectorAll("nav > ul > li");
+
+    //수리검이 마우스를 쫓아다니게 설정
+    addEventListener("mousemove", (e) => {
+      //마우스 위치값 설정(이미지 넓이의 절반값만큼 위치값에서 빼서 가운데 정렬)
+      const x = e.clientX - 25;
+      const y = e.clientY - 25;
+      cursor.style.translate = `${x}px ${y}px`;
+    })
+
+    //링크 메뉴 위에 마우스를 올리면 회전
+    //링크 메뉴를 전부 순회하면서 mouseenter이벤트 생성
+    links.forEach(link => {
+      link.addEventListener("mouseenter", () => {
+        //cursor이미지를 선택하여 회전
+        cursor.firstElementChild.style.rotate = '180deg';
+      })
+      //링크 메뉴에 mouseleave이벤트 생성
+      link.addEventListener("mouseleave", () => {
+        //cursor이미지를 선택하여 처음 각도로 다시 회전
+        cursor.firstElementChild.style.rotate = '0deg';  
+      })
+    })
+  </script>
+</body>
+
+</html>

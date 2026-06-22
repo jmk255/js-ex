@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키보드정보취득</title>
+</head>
+<body>
+  <input type="text">
+  <span class="msg"></span>
+  <script>
+    const input = document.querySelector("input");
+    const msg = document.querySelector(".msg");
+
+    input.addEventListener("keyup", (e) => {
+      //e.key는 입력한 키 값을 문자열로 반환한다
+      //입력한 키가 'Enter', 즉 엔터 키가 아니면 무시한다
+      if(e.key !== 'Enter') return;
+      console.log(e.key)
+      //입력 필드에 입력된 값을 출력
+      msg.textContent = e.target.value;
+      e.target.value = "";//input에 입력된 값을 모두 제거
+    })
+  </script>
+</body>
+</html>
